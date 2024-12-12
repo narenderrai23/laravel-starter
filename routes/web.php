@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\LanguageController;
 use App\Livewire\Privacy;
 use App\Livewire\Terms;
@@ -15,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 
 require __DIR__.'/auth.php';
 
+
 /*
 *
 * Frontend Routes
@@ -22,8 +22,10 @@ require __DIR__.'/auth.php';
 * --------------------------------------------------------------------
 */
 
-// home route
-Route::get('home', [FrontendController::class, 'index'])->name('home');
+
+require __DIR__.'/frontent.php';
+
+
 
 // Language Switch
 Route::get('language/{language}', [LanguageController::class, 'switch'])->name('language.switch');
