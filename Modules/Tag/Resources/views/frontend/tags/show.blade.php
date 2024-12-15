@@ -1,4 +1,4 @@
-@extends("frontend.layouts.app")
+@extends("front.layouts.app")
 
 @section("title")
     {{ $$module_name_singular->name }} - {{ __($module_title) }}

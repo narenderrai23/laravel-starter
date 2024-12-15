@@ -1,4 +1,4 @@
-@extends("frontend.layouts.app")
+@extends("front.layouts.app")
 
 @section("title")
     Edit {{ $$module_name_singular->name }}'s Profile

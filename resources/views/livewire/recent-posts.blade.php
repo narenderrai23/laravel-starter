@@ -1,61 +1,82 @@
 <div>
-    <div class="container mx-auto flex w-full flex-col items-center justify-center">
-        <div
-            class="mb-2 w-full rounded-md border bg-white px-4 py-5 shadow dark:bg-gray-600 dark:text-gray-300 sm:px-6"
-        >
-            <h3 class="text-lg font-medium leading-6 text-gray-800 dark:text-gray-200">
-                @lang("Recent Posts")
-            </h3>
-            <p class="mt-1 max-w-2xl text-sm text-gray-500 dark:text-gray-200">Recently published articles!</p>
+    <!-- Search Box -->
+    <div class="search_box blog-thumbnail">
+        <div class="input-group">
+            <input class="form-control custom_input" placeholder="Search" type="text">
+            <span class="input-group-btn">
+                <button class="btn btn-default custom_input" type="button">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
         </div>
-        <ul class="flex w-full flex-col">
-            @foreach ($recentPosts as $row)
-                @php
-                    $details_url = route("frontend.posts.show", [encode_id($row->id), $row->slug]);
-                @endphp
+    </div>
 
-                <li class="mb-2 flex flex-row border-gray-400">
-                    <div
-                        class="flex flex-1 transform cursor-pointer select-none items-center justify-between rounded-md bg-white p-4 shadow transition duration-500 ease-in-out hover:-translate-y-1 hover:shadow-lg dark:bg-gray-600 dark:text-gray-300"
-                    >
-                        <div class="flex">
-                            <div class="mr-4 flex h-10 flex-col items-center justify-center">
-                                <a class="relative block" href="{{ $details_url }}">
-                                    <img
-                                        class="mx-auto h-10 rounded object-cover"
-                                        src="{{ $row->image }}"
-                                        alt="{{ $row->name }}"
-                                    />
-                                </a>
-                            </div>
-                            <div class="pl-1">
-                                <div class="font-medium">
-                                    <a href="{{ $details_url }}">
-                                        {{ $row->name }}
-                                    </a>
-                                </div>
-                                <div class="text-sm text-gray-600 dark:text-gray-200">
-                                    {{ isset($row->created_by_alias) ? $row->created_by_alias : $row->created_by_name }}
-                                </div>
-                            </div>
+    <!-- Popular Posts -->
+    <div class="blog_info blog-thumbnail">
+        <div class="blogimagedescription">
+            <h3>Popular posts</h3>
+        </div>
+        <ul class="archieves clearfix">
+            @foreach ($recentPosts as $row)
+                <li>
+                    <div class="col-md-4 col-sm-2 padding_none">
+                        <div class="blogimage_thumbnail">
+                            <img src="{{ asset($row->image) }}" alt="{{ $row->name }}" class="img-responsive">
                         </div>
-                        <button class="flex w-6 justify-end text-right">
-                            <svg
-                                class="text-gray-500 hover:text-gray-800 dark:text-gray-200"
-                                width="12"
-                                fill="currentColor"
-                                height="12"
-                                viewBox="0 0 1792 1792"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M1363 877l-742 742q-19 19-45 19t-45-19l-166-166q-19-19-19-45t19-45l531-531-531-531q-19-19-19-45t19-45l166-166q19-19 45-19t45 19l742 742q19 19 19 45t-19 45z"
-                                ></path>
-                            </svg>
-                        </button>
+                    </div>
+                    <div class="col-md-8 col-sm-10">
+                        <div class="blogimagedescription">
+                            <h3>
+                                <a href="{{ route('frontend.posts.show', [$row->id, $row->slug]) }}">
+                                    {{ $row->name }}
+                                </a>
+                            </h3>
+                            <p class="detail">
+                                <span>{{ $row->published_at ? $row->published_at->format('F d, Y') : '' }}</span>
+                                <span>{{ $row->author_name }}</span>
+                            </p>
+                        </div>
                     </div>
                 </li>
             @endforeach
         </ul>
     </div>
+
+
+
+    {{-- <!-- Tags -->
+    <div class="clearfix"></div>
+    <h3 class="text-uppercase bottom40">Tags</h3>
+    <div class="news-tag">
+        @foreach ($tags as $tag)
+            <a href="{{ route('frontend.tags.show', $tag->slug) }}">{{ $tag->name }}</a>
+        @endforeach
+    </div>
+
+    <!-- Latest Properties -->
+    <div class="row">
+        <div class="col-md-12 bottom20">
+            <h3 class="text-uppercase top40 bottom40">Latest <span class="color_red">Properties</span></h3>
+        </div>
+        <div class="col-md-12">
+            <div id="agent-3-slider" class="owl-carousel">
+                @foreach ($latestProperties as $property)
+                    <div class="item">
+                        <div class="property_item">
+                            <div class="image">
+                                <a href="{{ route('frontend.properties.show', $property->slug) }}">
+                                    <img src="{{ $property->image }}" alt="{{ $property->title }}"
+                                        class="img-responsive">
+                                </a>
+                                <div class="feature">
+                                    <span class="tag-2">{{ $property->status }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div> --}}
+
 </div>

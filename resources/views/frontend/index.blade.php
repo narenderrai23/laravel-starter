@@ -1,4 +1,4 @@
-@extends("frontend.layouts.app")
+@extends("front.layouts.app")
 
 @section("title")
     {{ app_name() }}
