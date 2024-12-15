@@ -4,7 +4,7 @@
     'image' => '',
 ])
 
-<div class="col-md-4 col-sm-4 col-xs-12">
+<div class="col-sm-4 col-xs-12 margin-bottom-20">
     <div class="sim-lar-p">
         @if ($image)
             <div class="image"><img src="{{ $image }}" alt="{{ $name }}"></div>

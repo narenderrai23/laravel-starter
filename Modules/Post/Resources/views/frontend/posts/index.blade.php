@@ -9,15 +9,8 @@
     </x-frontend.header-block>
 
     <section class="padding_top">
-        <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
-            @foreach ($$module_name as $$module_name_singular)
-                @php
-                    $details_url = route("frontend.$module_name.show", [
-                        encode_id($$module_name_singular->id),
-                        $$module_name_singular->slug,
-                    ]);
-                @endphp
-
+        <div class="container">
+            <div class="row">
                 @foreach ($$module_name as $$module_name_singular)
                     @php
                         $details_url = route("frontend.$module_name.show", [
@@ -27,22 +20,22 @@
                     @endphp
 
                     <x-frontend.card :url="$details_url" :name="$$module_name_singular->name" :image="$$module_name_singular->image">
-                        <p class="bottom10">
+                        <p class="text-muted small">
                             <span>By:</span> Admin <span>|</span>
                             <span>Date:</span> {{ $$module_name_singular->created_at }}
                         </p>
 
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                        <p class="text-muted">
                             {{ $$module_name_singular->intro }}
                         </p>
                     </x-frontend.card>
                 @endforeach
-            @endforeach
-        </div>
+            </div>
 
-        <!-- Pagination -->
-        <div class="mt-6 flex justify-center">
-            {{ $$module_name->links('pagination::tailwind') }}
+            <!-- Pagination -->
+            <div class="text-center">
+                {{ $$module_name->links() }}
+            </div>
         </div>
     </section>
 @endsection

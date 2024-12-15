@@ -1,113 +1,209 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->currentLocale()) }}" dir="{{ language_direction() }}">
+@extends('front.layouts.app')
 
-<head>
-    <meta charset="utf-8" />
-    <link href="{{ asset('img/favicon.png') }}" rel="apple-touch-icon" sizes="76x76" />
-    <link type="image/png" href="{{ asset('img/favicon.png') }}" rel="icon" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>@yield('title') | {{ config('app.name') }}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="{{ setting('meta_description') }}" />
-    <meta name="keyword" content="{{ setting('meta_keyword') }}" />
-    @include('front.includes.meta')
+@section('content')
 
-    <!-- Shortcut Icon -->
-    <link href="{{ asset('img/favicon.png') }}" rel="shortcut icon" />
-    <link type="image/ico" href="{{ asset('img/favicon.png') }}" rel="icon" />
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
-
-    @livewireStyles
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/master.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/color/color-1.css') }}" id="color" />
-    @stack('after-styles')
-
-</head>
-
-<body>
-    <x-selected-theme />
-    @include('front.includes.header_2')
-
-
-
-
-    @include('front.includes.footer')
-
-    <!--===== BACK TO TOP =====-->
-    <div class="short-msg">
-        <a href="#." class="back-to"><i class="icon-arrow-up2"></i></a>
+<!--===== PAGE TITLE =====-->
+<div class="page-title page-main-section parallaxie">
+    <div class="container padding-bottom-top-120 text-uppercase text-center">
+      <div class="main-title">
+        <h1>about us</h1>
+        <h5>10 Years Of Experience!</h5>
+        <div class="line_4"></div>
+        <div class="line_5"></div>
+        <div class="line_6"></div>
+        <a href="/">home</a><span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span><a href="about.html">about us</a>
+      </div>
     </div>
-    <!--===== #/BACK TO TOP =====-->
+  </div>
+  <!--===== #/PAGE TITLE =====-->
 
-    <body>
 
-        <!--===== REQUIRED JS =====-->
-        <script src="{{ URL('/assets/') }}/js/jquery-3.2.1.min.js"></script>
-        <script src="{{ URL('/assets/') }}/js/bootstrap.min.js"></script>
-        <script src="{{ URL('/assets/') }}/js/bootsnav.js"></script>
+  <!--===== ABOUT US =====-->
+  <section id="about_us" class="about-us padding">
+    <div class="container">
+      <div class="row">
+        <div class="history-section">
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <h2 class="text-uppercase">Company <span class="color_red">overview</span></h2>
+            <div class="line_1"></div>
+            <div class="line_2"></div>
+            <div class="line_3"></div>
+            <p class="top20 bottom40">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+            <br><br>
+             It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
-        <!--To View on scroll-->
-        <script src="{{ URL('/assets/') }}/js/jquery.appear.js"></script>
+            </p>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div id="about_single" class="owl-carousel">
+              <div class="item">
+                <div class="content-right-md">
+                  <figure class="effect-layla">
+                    <img src="{{ URL('/assets/') }}/images/about-2.jpg" alt="img"/>
+                    <figcaption> </figcaption>
+                  </figure>
+                </div>
+              </div>
+              <div class="item">
+                <div class="content-right-md">
+                  <figure class="effect-layla">
+                    <img src="{{ URL('/assets/') }}/images/about-1.jpg" alt="img"/>
+                    <figcaption> </figcaption>
+                  </figure>
+                </div>
+              </div>
+              <div class="item">
+                <div class="content-right-md">
+                  <figure class="effect-layla">
+                    <img src="{{ URL('/assets/') }}/images/about-2.jpg" alt="img"/>
+                    <figcaption> </figcaption>
+                  </figure>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--===== #/ABOUT US =====-->
 
-        <!--Owl Slider-->
-        <script src="{{ URL('/assets/') }}/js/owl.carousel.min.js"></script>
 
-        <!--Parallax-->
-        <script src="{{ URL('/assets/') }}/js/parallaxie.js"></script>
 
-        <!--Fancybox-->
-        <script src="{{ URL('/assets/') }}/js/jquery.fancybox.min.js"></script>
 
-        <!--Cube Gallery-->
-        <script src="{{ URL('/assets/') }}/js/cubeportfolio.min.js"></script>
 
-        <!--Bootstrap Dropdown-->
-        <script src="{{ URL('/assets/') }}/js/bootstrap-select.js"></script>
+  <!--===== TEAM  =====-->
+  <section class=" padding_bottom" id="teams">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="text-uppercase">Our <span class="color_red">experts</span></h2>
+          <div class="line_1"></div>
+          <div class="line_2"></div>
+          <div class="line_3"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-sm-4">
+          <div class="team-member top40 text-center">
+            <div class="team-img">
+              <img src="{{ URL('/assets/') }}/images/t-s-1.jpg" alt="">
+            </div>
+            <div class="team-hover">
+              <div class="desk">
+                <h4 class="bottom10">I love to desing</h4>
+                <p>I love to introduce myself as a hardcore Web Designer.</p>
+              </div>
+              <div class="s-link">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-google-plus"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="team-title top20 text-center">
+            <h3>Martin Smith</h3>
+            <span>Founder & CEO</span>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4">
+          <div class="team-member top40 text-center">
+            <div class="team-img">
+              <img src="{{ URL('/assets/') }}/images/t-s-2.jpg" alt="">
+            </div>
+            <div class="team-hover">
+              <div class="desk">
+                <h4 class="bottom10">I love to desing</h4>
+                <p>I love to introduce myself as a hardcore Web Designer.</p>
+              </div>
+              <div class="s-link">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-google-plus"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="team-title top20 text-center">
+            <h3>Franklin Harbet</h3>
+            <span>Civil Engineer</span>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4">
+          <div class="team-member top40 text-center">
+            <div class="team-img">
+              <img src="{{ URL('/assets/') }}/images/t-s-3.jpg" alt="">
+            </div>
+            <div class="team-hover">
+              <div class="desk">
+                <h4 class="bottom10">I love to desing</h4>
+                <p>I love to introduce myself as a hardcore Web Designer.</p>
+              </div>
+              <div class="s-link">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-google-plus"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="team-title top20 text-center">
+            <h3>Linda Anderson</h3>
+            <span>Marketing Manager</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--===== #/TEAM  =====-->
 
-        <!--Video Popup-->
-        <script src="{{ URL('/assets/') }}/js/videobox/video.js"></script>
 
-        <!--Datepicker-->
-        <script src="{{ URL('/assets/') }}/js/datepicker.js"></script>
+  <!--===== IMAGE WITH CONTENT =====-->
+  <section class="info_section parallaxie">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4 col-sm-4"> </div>
+        <div class="col-md-4 col-sm-4 right_box">
+          <div class="right_box_inner padding clearfix">
+            <div class="col-md-12 col-sm-12 white_content text-center top20 bottom30">
+              <i class="icon-library"></i>
+              <h3 class="bottom10 top20">Residential</h3>
+              <p>Duis autem vel eum iriure dolor in hend rerit in vulputate velit esse molestie vel illum dolore nulla facilisis.</p>
+            </div>
+            <div class="col-md-12 col-sm-12 white_content text-center top20 bottom30">
+              <i class="icon-history"></i>
+              <h3 class="bottom10 top20">24 Hours Services</h3>
+              <p>Duis autem vel eum iriure dolor in hend rerit in vulputate velit esse molestie vel illum dolore nulla facilisis.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4"> </div>
+      </div>
+    </div>
+  </section>
+  <!--===== #/IMAGE WITH CONTENT =====-->
 
-        <!--Dropzone-->
-        <script src="{{ URL('/assets/') }}/js/dropzone.min.js"></script>
 
-        <!--Wow animation-->
-        <script src="{{ URL('/assets/') }}/js/wow.min.js"></script>
 
-        <!--Rang Slider-->
-        <script src="{{ URL('/assets/') }}/js/range-Slider.min.js"></script>
 
-        <!--Checkbox-->
-        <script src="{{ URL('/assets/') }}/js/selectbox-0.2.min.js"></script>
 
-        <!--Checkbox-->
-        <script src="{{ URL('/assets/') }}/js/scrollreveal.min.js"></script>
+  <!--===== OUR PARTNER =====-->
+  <div id="our-partner">
+    <div class="container-fluid">
+      <div id="partner_slider" class="owl-carousel">
+        <div class="item"><img src="{{ URL('/assets/') }}/images/partner-1.png" alt="Our Partner"></div>
+        <div class="item"><img src="{{ URL('/assets/') }}/images/partner-2.png" alt="Our Partner"></div>
+        <div class="item"><img src="{{ URL('/assets/') }}/images/partner-3.png" alt="Our Partner"></div>
+        <div class="item"><img src="{{ URL('/assets/') }}/images/partner-4.png" alt="Our Partner"></div>
+        <div class="item"><img src="{{ URL('/assets/') }}/images/partner-5.png" alt="Our Partner"></div>
+        <div class="item"><img src="{{ URL('/assets/') }}/images/partner-1.png" alt="Our Partner"></div>
+        <div class="item"><img src="{{ URL('/assets/') }}/images/partner-2.png" alt="Our Partner"></div>
+        <div class="item"><img src="{{ URL('/assets/') }}/images/partner-3.png" alt="Our Partner"></div>
+        <div class="item"><img src="{{ URL('/assets/') }}/images/partner-4.png" alt="Our Partner"></div>
+        <div class="item"><img src="{{ URL('/assets/') }}/images/partner-5.png" alt="Our Partner"></div>
+      </div>
+    </div>
+  </div>
+  <!--===== #/OUR PARTNER =====-->
 
-        <!--Checkbox-->
-        <script src="{{ URL('/assets/') }}/js/jquery-countTo.js"></script>
 
-        <!--Checkbox-->
-        <script src="{{ URL('/assets/') }}/js/jquery.typewriter.js"></script>
 
-        <!--Checkbox-->
-        <script src="{{ URL('/assets/') }}/js/death.min.js"></script>
-
-        <!--Revolution Slider-->
-        <script src="{{ URL('/assets/') }}/js/themepunch/jquery.themepunch.tools.min.js"></script>
-        <script src="{{ URL('/assets/') }}/js/themepunch/jquery.themepunch.revolution.min.js"></script>
-        <script src="{{ URL('/assets/') }}/js/themepunch/revolution.extension.layeranimation.min.js"></script>
-        <script src="{{ URL('/assets/') }}/js/themepunch/revolution.extension.navigation.min.js"></script>
-        <script src="{{ URL('/assets/') }}/js/themepunch/revolution.extension.parallax.min.js"></script>
-        <script src="{{ URL('/assets/') }}/js/themepunch/revolution.extension.slideanims.min.js"></script>
-        <script src="{{ URL('/assets/') }}/js/themepunch/revolution.extension.video.min.js"></script>
-
-        <!--Custom Js -->
-        <script src="{{ URL('/assets/') }}/js/functions.js"></script>
-
-    </body>
-
-</html>
+@endsection

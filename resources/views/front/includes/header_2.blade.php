@@ -25,7 +25,7 @@
     <div id="header-bottom">
         <div class="container">
             <div class="row">
-                <div class="col-md-2 hidden-xs hidden-sm"><a href="index.html"><img
+                <div class="col-md-2 hidden-xs hidden-sm"><a href="/"><img
                             src="{{ asset('assets/images/logo-white.png') }}" alt="logo" /></a></div>
                 <div class="col-md-10 col-sm-12 col-xs-12">
                     <div class="get-tuch text-left top20">
@@ -76,12 +76,14 @@
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                             <i class="fa fa-bars"></i></button>
-                        <a class="navbar-brand sticky_logo" href="index.html"><img src="images/logo-white.png"
-                                class="logo" alt=""></a>
+                        <a class="navbar-brand sticky_logo" href="/"><img
+                                src="{{ URL('/assets/') }}/images/logo-white.png" class="logo" alt=""></a>
                     </div>
                     <!-- End Header Navigation -->
                     <!-- Collect the nav links, forms, and other content for toggling -->
-                    @include('front.includes.menu')
+                    @include('front.includes.menu', [
+                        'right' => false,
+                    ])
                 </div>
             </div>
         </div>

@@ -4,7 +4,7 @@
         <div class="row border-bottom">
             <div class="col-sm-6 col-md-3">
                 <div class="widget dark">
-                    <img class="mt-5 mb-20" alt="" src="{{URL('/assets/')}}/images/logo.png" />
+                    <img class="mt-5 mb-20" alt="" src="{{ URL('/assets/') }}/images/logo.png" />
                     <p>138,139 FIRST FLOOR JMD GALLERIA ,SECTOR 48 GURGAON-122002</p>
                     <ul class="list-inline mt-5">
                         <li class="m-0 pl-10 pr-10">
@@ -47,10 +47,18 @@
                         <div class="clearfix"></div>
                     </div>
                     <ul class="list angle-double-right list-border">
-                        <li><a href="#.">Home </a></li>
+                        {{-- <li><a href="#.">Home </a></li>
                         <li><a href="#.">About Us </a></li>
                         <li><a href="#.">Services </a></li>
-                        <li><a href="#.">Contact Us </a></li>
+                        <li><a href="#.">Contact Us </a></li> --}}
+
+                        <ul class="list angle-double-right list-border">
+                            <li><a href="{{ route('home') }}">Home</a></li>
+                            <li><a href="{{ route('frontend.about') }}">About Us</a></li>
+                            <li><a href="{{ route('frontend.services') }}">Services</a></li>
+                            <li><a href="{{ route('frontend.contact-us') }}">Contact Us</a></li>
+                        </ul>
+
                     </ul>
                 </div>
             </div>
@@ -62,12 +70,19 @@
                         <div class="line2 background-color-white"></div>
                         <div class="clearfix"></div>
                     </div>
-                    <ul class="list list-border">
+                    {{-- <ul class="list list-border">
                         <li><a href="#.">Residential</a></li>
                         <li><a href="#.">Commercial</a></li>
                         <li><a href="#.">Careers</a></li>
                         <li><a href="#.">Blogs </a></li>
+                    </ul> --}}
+                    <ul class="list list-border">
+                        <li><a href="{{ route('frontend.properties.residential') }}">Residential</a></li>
+                        <li><a href="{{ route('frontend.properties.commercial') }}">Commercial</a></li>
+                        <li><a href="{{ route('frontend.career') }}">Careers</a></li>
+                        <li><a href="{{ route('frontend.posts.index') }}">Blogs</a></li>
                     </ul>
+
                 </div>
             </div>
             <div class="col-sm-6 col-md-3">
@@ -125,5 +140,5 @@
             </div>
         </div>
     </div>
-  </footer>
-  <!-- #/FOOTER -->
+</footer>
+<!-- #/FOOTER -->

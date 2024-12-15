@@ -13,7 +13,7 @@
                 <div class="line_4"></div>
                 <div class="line_5"></div>
                 <div class="line_6"></div>
-                <a href="index.html">home</a><span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
+                <a href="/">home</a><span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
                 <a href="news-details.html">Blog Details</a>
             </div>
         </div>
