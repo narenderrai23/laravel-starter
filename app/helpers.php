@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Location;
+use App\Models\PropertyType;
+
 /*
  * Global helpers file with misc functions.
  */
@@ -12,6 +15,20 @@ if (! function_exists('app_name')) {
     function app_name()
     {
         return config('app.name');
+    }
+}
+
+if (!function_exists('get_all_locations')) {
+    function get_all_locations()
+    {
+        return Location::all();
+    }
+}
+
+if (!function_exists('get_all_properties')) {
+    function get_all_properties()
+    {
+        return PropertyType::all();
     }
 }
 

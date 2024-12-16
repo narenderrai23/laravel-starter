@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EstimateController;
 use App\Http\Controllers\Frontend\FrontendController;
 
 
@@ -30,3 +31,6 @@ Route::group(['as' => 'frontend.'], function () {
         Route::view('/commercial', 'front.properties.commercial')->name('properties.commercial'); // Commercial properties
     });
 });
+
+
+Route::post('/estimate', [EstimateController::class, 'submitForm'])->name('estimate.submit');
