@@ -30,7 +30,7 @@ require __DIR__.'/frontent.php';
 // Language Switch
 Route::get('language/{language}', [LanguageController::class, 'switch'])->name('language.switch');
 
-Route::get('dashboard', 'App\Http\Controllers\Frontend\FrontendController@index')->name('dashboard');
+// Route::get('dashboard', 'App\Http\Controllers\Frontend\FrontendController@index')->name('dashboard');
 
 // pages
 Route::get('terms', Terms::class)->name('terms');
