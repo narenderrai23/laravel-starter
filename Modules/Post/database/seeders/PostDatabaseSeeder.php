@@ -19,7 +19,7 @@ class PostDatabaseSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
         /*
-         * Posts Seed
+         * Blogs Seed
          * ------------------
          */
 

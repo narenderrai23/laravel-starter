@@ -11,13 +11,13 @@
         </div>
     </div>
 
-    <!-- Popular Posts -->
+    <!-- Popular Blog -->
     <div class="blog_info blog-thumbnail">
         <div class="blogimagedescription">
-            <h3>Popular posts</h3>
+            <h3>Popular Blogs</h3>
         </div>
         <ul class="archieves clearfix">
-            @foreach ($recentPosts as $row)
+            @foreach ($recentBlogs as $row)
                 <li>
                     <div class="col-md-4 col-sm-2 padding_none">
                         <div class="blogimage_thumbnail">

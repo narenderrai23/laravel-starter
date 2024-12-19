@@ -51,7 +51,7 @@ class PermissionRoleTableSeeder extends Seeder
         Artisan::call('auth:permissions', [
             'name' => 'posts',
         ]);
-        echo "\n _Posts_ Permissions Created.";
+        echo "\n _Blogs_ Permissions Created.";
 
         Artisan::call('auth:permissions', [
             'name' => 'categories',

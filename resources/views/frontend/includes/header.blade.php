@@ -335,7 +335,7 @@
                     :href="route('frontend.posts.index')"
                     :active="request()->routeIs('frontend.posts.*')"
                 >
-                    {{ __("Posts") }}
+                    {{ __("Blogs") }}
                 </x-frontend.nav-item>
                 <x-frontend.nav-item
                     :href="route('frontend.categories.index')"

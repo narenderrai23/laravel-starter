@@ -23,7 +23,7 @@ class FrontendController extends Controller
     // public function index()
     // {
     //     $module_model = $this->module_model;
-    //     $posts = Post::orderBy("created_at", "desc")->paginate(3);
+    //     $blogs = Post::orderBy("created_at", "desc")->paginate(3);
     //     $module_name = $module_model::latest()->paginate();
     //     return view('front.index', compact('module_name'));
     //     // return view(
@@ -45,7 +45,7 @@ class FrontendController extends Controller
     public function __construct()
     {
         // Page Title
-        $this->module_title = 'Posts';
+        $this->module_title = 'Blogs';
 
         // module name
         $this->module_name = 'posts';

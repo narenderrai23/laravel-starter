@@ -9,16 +9,16 @@ class PostUpdated
 {
     use SerializesModels;
 
-    public $post;
+    public $blog;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(Post $post)
+    public function __construct(Post $blog)
     {
-        $this->post = $post;
+        $this->post = $blog;
     }
 
     /**

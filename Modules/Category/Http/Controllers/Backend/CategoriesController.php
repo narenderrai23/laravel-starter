@@ -91,7 +91,7 @@ class CategoriesController extends BackendBaseController
 
         $$module_name_singular = $module_model::findOrFail($id);
 
-        $posts = $$module_name_singular->posts()->latest()->paginate();
+        $blogs = $$module_name_singular->posts()->latest()->paginate();
 
         logUserAccess($module_title.' '.$module_action.' | Id: '.$$module_name_singular->id);
 

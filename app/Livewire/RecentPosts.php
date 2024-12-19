@@ -15,8 +15,8 @@ class RecentPosts extends Component
 
         $limit = $limit > 0 ? $limit : 5;
 
-        $recentPosts = Post::recentlyPublished()->take($limit)->get();
+        $recentBlogs = Post::recentlyPublished()->take($limit)->get();
 
-        return view('livewire.recent-posts', compact('recentPosts'));
+        return view('livewire.recent-posts', compact('recentBlogs'));
     }
 }

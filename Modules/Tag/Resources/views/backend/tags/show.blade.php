@@ -36,14 +36,14 @@
             </div>
             <div class="col-12 col-sm-4">
                 <h5>
-                    Posts
-                    <small>({{ count($posts) }})</small>
+                    Blogs
+                    <small>({{ count($blogs) }})</small>
                 </h5>
                 <ul>
-                    @foreach ($posts as $post)
+                    @foreach ($blogs as $blog)
                         <li>
-                            <a href="{{ route("backend.posts.show", [$post->id, $post->slug]) }}">
-                                {{ $post->name }}
+                            <a href="{{ route("backend.posts.show", [$blog->id, $blog->slug]) }}">
+                                {{ $blog->name }}
                             </a>
                         </li>
                     @endforeach
