@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Location;
-use App\Models\PropertyType;
 use Illuminate\Http\Request;
 use App\Models\EstimateQuery;
 
@@ -23,10 +22,10 @@ class EstimateController extends Controller
              'min_area' => 'nullable|numeric|min:0',
              'max_area' => 'nullable|numeric|min:0',
          ]);
- 
+
          // Save the data to the database
          EstimateQuery::create($validated);
- 
+
          // Redirect back with success message
          return redirect()->back()->with('success', 'Your query has been submitted successfully!');
      }

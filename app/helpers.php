@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\Location;
-use App\Models\PropertyType;
+use Modules\Category\Models\Category;
 
 /*
  * Global helpers file with misc functions.
@@ -28,7 +28,7 @@ if (!function_exists('get_all_locations')) {
 if (!function_exists('get_all_properties')) {
     function get_all_properties()
     {
-        return PropertyType::all();
+        return Category::all();
     }
 }
 
