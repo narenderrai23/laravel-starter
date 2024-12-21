@@ -21,10 +21,10 @@ class DatabaseSeeder extends Seeder
 
         $this->call(
             [
-                // AuthTableSeeder::class,
-                // CategoryDatabaseSeeder::class,
-                // TagDatabaseSeeder::class,
-                // PostDatabaseSeeder::class,
+                AuthTableSeeder::class,
+                CategoryDatabaseSeeder::class,
+                TagDatabaseSeeder::class,
+                PostDatabaseSeeder::class,
                 PropertyDatabaseSeeder::class
             ]
         );
