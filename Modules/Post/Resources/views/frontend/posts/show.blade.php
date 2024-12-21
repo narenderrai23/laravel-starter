@@ -35,14 +35,14 @@
                             {{ isset($$module_name_singular->created_by_alias) ? $$module_name_singular->created_by_alias : $$module_name_singular->created_by_name }}
                         </div>
                         <div>
-                            {{ __('Published at') }}: {{ $$module_name_singular->published_at->isoFormat('llll') }}
+                            {{ __('Published at') }}: {{ $$module_name_singular->published_at }}
                         </div>
                     </div>
                     <!-- Category Section -->
                     <div class="mb-20">
                         <span class="fw-bold">@lang('Category'):</span>
                         <x-frontend.badge :url="route('frontend.categories.show', [
-                            encode_id($$module_name_singular->category_id),
+                            ($$module_name_singular->category_id),
                             $$module_name_singular->category->slug,
                         ])" :text="$$module_name_singular->category_name" />
                     </div>
@@ -51,7 +51,7 @@
                         <div class="mb-20">
                             <span class="fw-bold">@lang('Tags'):</span>
                             @foreach ($$module_name_singular->tags as $tag)
-                                <x-frontend.badge :url="route('frontend.tags.show', [encode_id($tag->id), $tag->slug])" :text="$tag->name" />
+                                <x-frontend.badge :url="route('frontend.tags.show', [($tag->id), $tag->slug])" :text="$tag->name" />
                             @endforeach
                         </div>
                     @endif

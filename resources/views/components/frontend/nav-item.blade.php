@@ -1,5 +1,5 @@
 @props([
-    'href' => route('home'),
+    'href' => url('/'),
     'target' => '_self',
     'active' => false, // Active state
     'submenu' => [], // Array of submenu items

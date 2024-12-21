@@ -15,22 +15,19 @@ class PostDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // Disable foreign key checks!
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        // Disable foreign key checks
 
-        /*
-         * Blogs Seed
-         * ------------------
-         */
+        // Seed posts
+        try {
+            DB::table('posts')->truncate();
+            echo "Truncate: posts\n";
 
-        // DB::table('posts')->truncate();
-        // echo "Truncate: posts \n";
+            Post::factory()->count(20)->create();
+            echo "Insert: posts\n";
+        } catch (\Exception $e) {
+            echo "Error seeding posts: " . $e->getMessage() . "\n";
+        }
 
-        Post::factory()->count(20)->create();
-        $rows = Post::all();
-        echo " Insert: posts \n\n";
-
-        // Enable foreign key checks!
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        // Enable foreign key checks
     }
 }

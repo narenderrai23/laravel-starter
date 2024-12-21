@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Modules\Property\Http\Controllers\Frontend\PropertiesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,7 @@ Route::group(['namespace' => '\Modules\Property\Http\Controllers\Frontend', 'as'
     Route::get("$module_name", ['as' => "$module_name.index", 'uses' => "$controller_name@index"]);
     Route::get("$module_name/{id}/{slug?}", ['as' => "$module_name.show", 'uses' => "$controller_name@show"]);
 });
+Route::get('property/{id}/{slug?}', [PropertiesController::class, 'show'])->name('frontend.property.show');
 
 /*
 *

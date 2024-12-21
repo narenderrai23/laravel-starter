@@ -15,22 +15,45 @@ class TagDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // Disable foreign key checks!
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        // Disable foreign key checks
+        // DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
-        /*
-         * Tags Seed
-         * ------------------
-         */
+        // Truncate the table to avoid duplicates (optional)
+        DB::table('tags')->truncate();
+        echo "Truncate: tags \n";
 
-        // DB::table('tags')->truncate();
-        // echo "Truncate: tags \n";
+        // Predefined tags for real estate
+        $realEstateTags = [
+            'Apartment',
+            'Villa',
+            'Office Space',
+            'Residential',
+            'Commercial',
+            'Land',
+            'Luxury',
+            'Budget-Friendly',
+            'Beachfront',
+            'City Center',
+            'Suburban',
+            'Furnished',
+            'Unfurnished',
+            'New Construction',
+            'Renovated',
+            'For Sale',
+            'For Rent',
+            'Pet-Friendly',
+            'Gated Community',
+            'Green Building'
+        ];
 
-        Tag::factory()->count(20)->create();
-        $rows = Tag::all();
-        echo " Insert: tags \n\n";
+        // Insert predefined tags
+        foreach ($realEstateTags as $tag) {
+            Tag::create(['name' => $tag]);
+        }
 
-        // Enable foreign key checks!
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        echo "Insert: real estate tags \n\n";
+
+        // Enable foreign key checks
+        // DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }

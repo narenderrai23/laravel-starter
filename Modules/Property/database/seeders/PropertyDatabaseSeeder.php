@@ -15,22 +15,15 @@ class PropertyDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // Disable foreign key checks!
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
-        /*
-         * Properties Seed
-         * ------------------
-         */
+        try {
+            DB::table(table: 'properties')->truncate();
+            echo "Truncate: properties\n";
 
-        // DB::table('properties')->truncate();
-        // echo "Truncate: properties \n";
-
-        Property::factory()->count(20)->create();
-        $rows = Property::all();
-        echo " Insert: properties \n\n";
-
-        // Enable foreign key checks!
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+            Property::factory()->count(20)->create();
+            echo "Insert: properties\n";
+        } catch (\Exception $e) {
+            echo "Error seeding properties: " . $e->getMessage() . "\n";
+        }
     }
 }

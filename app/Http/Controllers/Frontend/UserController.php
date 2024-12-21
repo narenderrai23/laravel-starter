@@ -139,7 +139,7 @@ class UserController extends Controller
         }
 
         if ($id !== auth()->user()->id) {
-            return redirect()->route('frontend.users.profile', encode_id($id));
+            return redirect()->route('frontend.users.profile', ($id));
         }
 
         $$module_name_singular = $module_model::findOrFail($id);
@@ -171,7 +171,7 @@ class UserController extends Controller
         $module_action = 'Profile Update';
 
         if ($id !== auth()->user()->id) {
-            return redirect()->route('frontend.users.profile', encode_id($id));
+            return redirect()->route('frontend.users.profile', ($id));
         }
 
         $request->validate([
@@ -234,7 +234,7 @@ class UserController extends Controller
         $body_class = 'profile-page';
 
         if ($id !== auth()->user()->id) {
-            return redirect()->route('frontend.users.profile', encode_id($id));
+            return redirect()->route('frontend.users.profile', ($id));
         }
 
         $$module_name_singular = $module_model::findOrFail($id);
@@ -321,7 +321,7 @@ class UserController extends Controller
      */
     public function emailConfirmationResend($id)
     {
-        $id = decode_id($id);
+
 
         if ($id !== auth()->user()->id) {
             if (auth()->user()->hasAnyRole(['administrator', 'super admin'])) {

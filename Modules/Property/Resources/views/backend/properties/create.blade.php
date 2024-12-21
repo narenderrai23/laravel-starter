@@ -11,6 +11,12 @@
 </x-backend.breadcrumbs>
 @endsection
 
-@section('content')
-<x-backend.layouts.create :module_name="$module_name" :module_path="$module_path" :module_title="$module_title" :module_icon="$module_icon" :module_action="$module_action" />
+@section("content")
+    <x-backend.layouts.create
+        :module_name="$module_name"
+        :module_path="$module_path"
+        :module_title="$module_title"
+        :module_icon="$module_icon"
+        :module_action="$module_action"
+    />
 @endsection

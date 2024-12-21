@@ -82,6 +82,8 @@
 
     @include('front.home.query')
 
+    {{-- @dd($properties['data']); --}}
+
     <!-- RECENT PROPERTY -->
     <section id="agent-p-2" class="property-details bg_light padding">
         <div class="container">
@@ -101,6 +103,49 @@
             <div class="col-md-12">
                 <div class="row">
                     <div id="property-2-slider" class="owl-carousel">
+                        @foreach ($properties as $property)
+                            @php
+                                $property_route = route('frontend.property.show', [$property->id, $property->slug]);
+                            @endphp
+                            <div class="item">
+                                <div class="property_item bottom40">
+                                    <div class="image">
+                                        <img src="{{ $property->image }}"
+                                            alt="{{ $property->name }}" class="img-responsive">
+                                        <div class="property_meta">
+                                            <span><i class="fa fa-object-group"></i>{{ $property->size }} sq ft </span>
+                                            <span><i class="fa fa-bed"></i>{{ $property->bedrooms }}</span>
+                                            <span><i class="fa fa-bath"></i>{{ $property->bathrooms }} Bathroom</span>
+                                        </div>
+                                        <div class="price">
+                                            <span class="tag">{{ $property->status }}</span>
+                                        </div>
+                                        <div class="overlay">
+                                            <div class="centered">
+                                                <a class="link_arrow white_border" href="{{ $property_route }}">View
+                                                    Detail</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="proerty_content">
+                                        <div class="proerty_text">
+                                            <h3><a href="{{ $property_route }}">{{ $property->name }}</a>
+                                            </h3>
+                                            <span class="bottom10">{{ $property->location }}</span>
+                                            <p><strong>${{ number_format($property->price, 2) }} Per Month</strong></p>
+                                        </div>
+                                        <div class="favroute clearfix">
+                                            <p class="pull-left"><i class="icon-calendar2"></i>
+                                                {{ $property->created_at->diffForHumans() }}</p>
+                                            <ul class="pull-right">
+                                                <li><a href="#."><i class="icon-video"></i></a></li>
+                                                <li><a href="#."><i class="icon-like"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                         <div class="item">
                             <div class="property_item bottom40">
                                 <div class="image">
@@ -120,166 +165,6 @@
                                 <div class="proerty_content">
                                     <div class="proerty_text">
                                         <h3><a href="property_details_2.html">House in New York City</a></h3>
-                                        <span class="bottom10">Merrick Way, Miami, USA</span>
-                                        <p><strong>$8,600 Per Month</strong></p>
-                                    </div>
-                                    <div class="favroute clearfix">
-                                        <p class="pull-left"><i class="icon-calendar2"></i> 3 Days ago</p>
-                                        <ul class="pull-right">
-                                            <li><a href="#."><i class="icon-video"></i></a></li>
-                                            <li><a href="#."><i class="icon-like"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="property_item bottom40">
-                                <div class="image">
-                                    <img src="{{ URL('/assets/') }}/images/property-listing-3.jpg" alt="listin"
-                                        class="img-responsive">
-                                    <div class="property_meta">
-                                        <span><i class="fa fa-object-group"></i>530 sq ft </span>
-                                        <span><i class="fa fa-bed"></i>2</span>
-                                        <span><i class="fa fa-bath"></i>1 Bathroom</span>
-                                    </div>
-                                    <div class="price"><span class="tag">For Sale</span></div>
-                                    <div class="overlay">
-                                        <div class="centered"><a class="link_arrow white_border"
-                                                href="property_details_1.html">View Detail</a></div>
-                                    </div>
-                                </div>
-                                <div class="proerty_content">
-                                    <div class="proerty_text">
-                                        <h3><a href="property_details_1.html">House in New York City</a></h3>
-                                        <span class="bottom10">Merrick Way, Miami, USA</span>
-                                        <p><strong>$83,600,200</strong></p>
-                                    </div>
-                                    <div class="favroute clearfix">
-                                        <p class="pull-left"><i class="icon-calendar2"></i> 3 Days ago</p>
-                                        <ul class="pull-right">
-                                            <li><a href="#."><i class="icon-video"></i></a></li>
-                                            <li><a href="#."><i class="icon-like"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="property_item bottom40">
-                                <div class="image">
-                                    <img src="{{ URL('/assets/') }}/images/property-listing-2.jpg" alt="listin"
-                                        class="img-responsive">
-                                    <div class="property_meta">
-                                        <span><i class="fa fa-object-group"></i>530 sq ft </span>
-                                        <span><i class="fa fa-bed"></i>2</span>
-                                        <span><i class="fa fa-bath"></i>1 Bathroom</span>
-                                    </div>
-                                    <div class="price"><span class="tag">For Rent</span></div>
-                                    <div class="overlay">
-                                        <div class="centered"><a class="link_arrow white_border"
-                                                href="property_details_1.html">View Detail</a></div>
-                                    </div>
-                                </div>
-                                <div class="proerty_content">
-                                    <div class="proerty_text">
-                                        <h3><a href="property_details_3.html">House in New York City</a></h3>
-                                        <span class="bottom10">Merrick Way, Miami, USA</span>
-                                        <p><strong>$8,600 Per Month</strong></p>
-                                    </div>
-                                    <div class="favroute clearfix">
-                                        <p class="pull-left"><i class="icon-calendar2"></i> 3 Days ago</p>
-                                        <ul class="pull-right">
-                                            <li><a href="#."><i class="icon-video"></i></a></li>
-                                            <li><a href="#."><i class="icon-like"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="property_item bottom40">
-                                <div class="image">
-                                    <img src="{{ URL('/assets/') }}/images/property-listing-1.jpg" alt="listin"
-                                        class="img-responsive">
-                                    <div class="property_meta">
-                                        <span><i class="fa fa-object-group"></i>530 sq ft </span>
-                                        <span><i class="fa fa-bed"></i>2</span>
-                                        <span><i class="fa fa-bath"></i>1 Bathroom</span>
-                                    </div>
-                                    <div class="price"><span class="tag">For Rent</span></div>
-                                    <div class="overlay">
-                                        <div class="centered"><a class="link_arrow white_border"
-                                                href="property_details_1.html">View Detail</a></div>
-                                    </div>
-                                </div>
-                                <div class="proerty_content">
-                                    <div class="proerty_text">
-                                        <h3><a href="property_details_2.html">House in New York City</a></h3>
-                                        <span class="bottom10">Merrick Way, Miami, USA</span>
-                                        <p><strong>$8,600 Per Month</strong></p>
-                                    </div>
-                                    <div class="favroute clearfix">
-                                        <p class="pull-left"><i class="icon-calendar2"></i> 3 Days ago</p>
-                                        <ul class="pull-right">
-                                            <li><a href="#."><i class="icon-video"></i></a></li>
-                                            <li><a href="#."><i class="icon-like"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="property_item bottom40">
-                                <div class="image">
-                                    <img src="{{ URL('/assets/') }}/images/property-listing-3.jpg" alt="listin"
-                                        class="img-responsive">
-                                    <div class="property_meta">
-                                        <span><i class="fa fa-object-group"></i>530 sq ft </span>
-                                        <span><i class="fa fa-bed"></i>2</span>
-                                        <span><i class="fa fa-bath"></i>1 Bathroom</span>
-                                    </div>
-                                    <div class="price"><span class="tag">For Sale</span></div>
-                                    <div class="overlay">
-                                        <div class="centered"><a class="link_arrow white_border"
-                                                href="property_details_1.html">View Detail</a></div>
-                                    </div>
-                                </div>
-                                <div class="proerty_content">
-                                    <div class="proerty_text">
-                                        <h3><a href="property_details_1.html">House in New York City</a></h3>
-                                        <span class="bottom10">Merrick Way, Miami, USA</span>
-                                        <p><strong>$8,60020</strong></p>
-                                    </div>
-                                    <div class="favroute clearfix">
-                                        <p class="pull-left"><i class="icon-calendar2"></i> 3 Days ago</p>
-                                        <ul class="pull-right">
-                                            <li><a href="#."><i class="icon-video"></i></a></li>
-                                            <li><a href="#."><i class="icon-like"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="property_item bottom40">
-                                <div class="image">
-                                    <img src="{{ URL('/assets/') }}/images/property-listing-2.jpg" alt="listin"
-                                        class="img-responsive">
-                                    <div class="property_meta">
-                                        <span><i class="fa fa-object-group"></i>530 sq ft </span>
-                                        <span><i class="fa fa-bed"></i>2</span>
-                                        <span><i class="fa fa-bath"></i>1 Bathroom</span>
-                                    </div>
-                                    <div class="price"><span class="tag">For Rent</span></div>
-                                    <div class="overlay">
-                                        <div class="centered"><a class="link_arrow white_border"
-                                                href="property_details_1.html">View Detail</a></div>
-                                    </div>
-                                </div>
-                                <div class="proerty_content">
-                                    <div class="proerty_text">
-                                        <h3><a href="property_details_3.html">House in New York City</a></h3>
                                         <span class="bottom10">Merrick Way, Miami, USA</span>
                                         <p><strong>$8,600 Per Month</strong></p>
                                     </div>
@@ -564,7 +449,7 @@
                 @foreach ($$module_name as $$module_name_singular)
                     @php
                         $details_url = route("frontend.$module_name.show", [
-                            encode_id($$module_name_singular->id),
+                            ($$module_name_singular->id),
                             $$module_name_singular->slug,
                         ]);
                     @endphp

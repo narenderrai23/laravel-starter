@@ -11,7 +11,18 @@
                     <div class="header-top-links">
                         <ul>
                             <li><a href="#"><i class="icon-icons215"></i>My Property</a></li>
-                            <li><a href="#" class="header-login"><i class="icon-icons179"></i>Login </a></li>
+                            @auth
+                                <li><a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <i class="icon-icons179"></i>Logout
+                                    </a></li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            @else
+                                <li><a href="{{ route('login') }}" class="header-login"><i
+                                            class="icon-icons179"></i>Login</a></li>
+                            @endauth
                         </ul>
                     </div>
                 </div>
@@ -19,6 +30,7 @@
         </div>
     </div>
     <!--===== #/HEADER TOP =====-->
+
 
 
     <!--===== HEADER BOTTOM =====-->
@@ -75,9 +87,11 @@
                     <!-- Start Header Navigation -->
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
-                            <i class="fa fa-bars"></i></button>
-                        <a class="navbar-brand sticky_logo" href="/"><img
-                                src="{{ URL('/assets/') }}/images/logo-white.png" class="logo" alt=""></a>
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <a class="navbar-brand sticky_logo" href="/">
+                            <img src="{{ URL('/assets/') }}/images/logo-white.png" class="logo" alt="">
+                        </a>
                     </div>
                     <!-- End Header Navigation -->
                     <!-- Collect the nav links, forms, and other content for toggling -->

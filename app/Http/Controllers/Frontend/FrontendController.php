@@ -5,33 +5,10 @@ namespace App\Http\Controllers\Frontend;
 use Illuminate\Support\Str;
 use Modules\Post\Models\Post;
 use App\Http\Controllers\Controller;
+use Modules\Property\Models\Property;
 
 class FrontendController extends Controller
 {
-    // public $module_model;
-
-    // public function __construct()
-    // {
-    //     $this->module_model = "Modules\Post\Models\Post";
-    // }
-
-    // /**
-    //  * Retrieves the view for the index page of the frontend.
-    //  *
-    //  * @return \Illuminate\Contracts\View\View
-    //  */
-    // public function index()
-    // {
-    //     $module_model = $this->module_model;
-    //     $blogs = Post::orderBy("created_at", "desc")->paginate(3);
-    //     $module_name = $module_model::latest()->paginate();
-    //     return view('front.index', compact('module_name'));
-    //     // return view(
-    //     //     "front.index",
-    //     //     compact('module_name')
-    //     // );
-    // }
-
     public $module_title;
 
     public $module_name;
@@ -78,9 +55,10 @@ class FrontendController extends Controller
 
         $$module_name = $module_model::latest()->paginate(3);
 
+        $properties = Property::latest()->paginate(10);
         return view(
             "front.index",
-            compact('module_title', 'module_name', "$module_name", 'module_icon', 'module_action', 'module_name_singular')
+            compact('module_title', 'module_name', "$module_name", 'module_icon', 'module_action', 'module_name_singular', 'properties')
         );
     }
 

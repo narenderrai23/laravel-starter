@@ -88,7 +88,7 @@
                     <x-backend.buttons.public
                         class=""
                         title="{{ __('Public') }}"
-                        route='{!! route("frontend.$module_name.show", encode_id($data->id)) !!}'
+                        route='{!! route("frontend.$module_name.show", ($data->id)) !!}'
                         small="true"
                     />
                 @endif

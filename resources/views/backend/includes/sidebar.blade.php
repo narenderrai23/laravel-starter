@@ -7,7 +7,7 @@ $notifications_latest = optional($notifications)->take(5);
 <div class="sidebar sidebar-dark sidebar-fixed border-end" id="sidebar">
     <div class="sidebar-header border-bottom">
         <div class="sidebar-brand d-sm-flex justify-content-center">
-            <a href="/">
+            <a href="{{ route('backend.dashboard') }}">
                 <img class="sidebar-brand-full" src="{{ asset('img/logo-with-text.jpg') }}" alt="{{ app_name() }}"
                     height="46" />
                 <img class="sidebar-brand-narrow" src="{{ asset('img/logo-square.jpg') }}" alt="{{ app_name() }}"
@@ -34,11 +34,19 @@ $notifications_latest = optional($notifications)->take(5);
                     'url' => route('backend.notifications.index'),
                 ],
                 [
+                    'group' => 'Property',
+                    'icon' => 'fa-regular fa-file-lines',
+                    'items' => [
+                        ['name' => 'properties', 'text' => __('Property'), 'permission' => 'view_posts'],
+                        ['name' => 'categories', 'text' => __('Categories'), 'permission' => 'view_categories'],
+                        ['name' => 'locations', 'text' => __('Locations'), 'permission' => 'view_locations'],
+                    ],
+                ],
+                [
                     'group' => 'blogs',
                     'icon' => 'fa-regular fa-file-lines',
                     'items' => [
                         ['name' => 'posts', 'text' => __('Blogs'), 'permission' => 'view_posts'],
-                        ['name' => 'categories', 'text' => __('Categories'), 'permission' => 'view_categories'],
                         ['name' => 'tags', 'text' => __('Tags'), 'permission' => 'view_tags'],
                     ],
                 ],
@@ -88,8 +96,8 @@ $notifications_latest = optional($notifications)->take(5);
                         @foreach ($module['items'] as $item)
                             @can($item['permission'])
                                 <li class="nav-item">
-                                    <a class="nav-link"
-                                        href="{{ $module['group'] === 'blogs' ? route('backend.' . $item['name'] . '.index') : route($item['route']) }}">
+                                    <a href="{{ isset($item['route']) ? route($item['route']) : route('backend.' . $item['name'] . '.index') }}"
+                                        class="nav-link">
                                         <span class="nav-icon"><span class="nav-icon-bullet"></span></span>
                                         &nbsp; {{ $item['text'] }}
                                     </a>

@@ -3,8 +3,9 @@
     <div class="container padding-bottom-top-120">
         <div class="row padding_bottom">
             <div class="col-sm-12 padding_top">
-                <h2 class="text-capitalize text-center top30 color_white"> DFI Realtors your places at <span
-                        class="color_red">idea homes</span> </h2>
+                <h2 class="text-capitalize text-center top30 color_white"> DFI Realtors your places at
+                    <span class="color_red">idea homes</span>
+                </h2>
                 <div class="line_1-1"></div>
                 <div class="line_2-2"></div>
                 <div class="line_3-3"></div>
@@ -37,11 +38,11 @@
 
                             <div class="col-lg-3 col-md-3 col-sm-12">
                                 <div class="single-query">
-                                    <select class="selectpicker" name="property_type_id" data-live-search="true">
+                                    <select class="selectpicker" name="categoty_id" data-live-search="true">
                                         <option value="">Property Type</option>
                                         @foreach (get_all_properties() as $type)
                                             <option value="{{ $type->id }}"
-                                                {{ old('property_type_id') == $type->id ? 'selected' : '' }}>
+                                                {{ old('categoty_id') == $type->id ? 'selected' : '' }}>
                                                 {{ $type->name }}
                                             </option>
                                         @endforeach
@@ -49,7 +50,7 @@
                                 </div>
                             </div>
 
-                           
+
 
                             <div class="col-md-2 col-sm-3 col-xs-12 text-right">
                                 <div class="query-submit-button form-group">

@@ -53,7 +53,7 @@
                         <li><a href="#.">Contact Us </a></li> --}}
 
                         <ul class="list angle-double-right list-border">
-                            <li><a href="{{ route('home') }}">Home</a></li>
+                            <li><a href="{{ url('/') }}">Home</a></li>
                             <li><a href="{{ route('frontend.about') }}">About Us</a></li>
                             <li><a href="{{ route('frontend.services') }}">Services</a></li>
                             <li><a href="{{ route('frontend.contact-us') }}">Contact Us</a></li>
@@ -77,8 +77,6 @@
                         <li><a href="#.">Blogs </a></li>
                     </ul> --}}
                     <ul class="list list-border">
-                        <li><a href="{{ route('frontend.properties.residential') }}">Residential</a></li>
-                        <li><a href="{{ route('frontend.properties.commercial') }}">Commercial</a></li>
                         <li><a href="{{ route('frontend.career') }}">Careers</a></li>
                         <li><a href="{{ route('frontend.posts.index') }}">Blogs</a></li>
                     </ul>

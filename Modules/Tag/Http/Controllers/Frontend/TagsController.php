@@ -68,7 +68,7 @@ class TagsController extends Controller
      */
     public function show($id)
     {
-        $id = decode_id($id);
+
 
         $module_title = $this->module_title;
         $module_name = $this->module_name;

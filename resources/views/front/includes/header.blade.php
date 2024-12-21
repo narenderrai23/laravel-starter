@@ -1,4 +1,35 @@
 <header id="header-top_2">
+    <!--===== HEADER TOP =====-->
+    <div id="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <p class="p-font-15 p-white">We are Best in Town With 10 years of Experience.</p>
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-12 text-right">
+                    <div class="header-top-links">
+                        <ul>
+                            <li><a href="#"><i class="icon-icons215"></i>My Property</a></li>
+                            @auth
+                                <li><a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <i class="icon-icons179"></i>Logout
+                                    </a></li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            @else
+                                <li><a href="{{ route('login') }}" class="header-login"><i
+                                            class="icon-icons179"></i>Login</a></li>
+                            @endauth
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--===== #/HEADER TOP =====-->
+
     <div class="container">
         <div class="row">
             <div class="header_set">

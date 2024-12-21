@@ -2,10 +2,12 @@
 
 namespace Modules\Category\database\seeders;
 
+use Carbon\Carbon;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Modules\Category\Models\Category;
-use Illuminate\Support\Facades\Http;
+use Faker\Factory as Faker;
+use Modules\Category\Enums\CategoryStatus;
 
 class CategoryDatabaseSeeder extends Seeder
 {
@@ -16,42 +18,30 @@ class CategoryDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // Disable foreign key checks!
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        // Initialize Faker
+        $faker = Faker::create();
 
-        /*
-         * Categories Seed
-         * ------------------
-         */
+        // Predefined tags for real estate
+        $realEstateTags = [
+            'Commercial',
+            'Residential',
+        ];
 
-        // DB::table('categories')->truncate();
-        // echo "Truncate: categories \n";
+        // Optional: Truncate the table before seeding
+        DB::table('categories')->truncate();
 
-        $response = Http::get('https://newsapi.org/v2/everything', [
-            'q' => 'tesla',
-            'from' => '2024-11-17',
-            'sortBy' => 'publishedAt',
-            'apiKey' => '0bddab3e6e7a4dd6bdbbd0ea103870c5',
-        ]);
-    
-        if ($response->successful()) {
-            // Parse the response as an array
-            $data = $response->json();
-
-            dd($data);
-            
-            // Handle the data (e.g., store it in the database, return it, etc.)
-            return response()->json($data);
-        } else {
-            // Handle the error if the request fails
-            return response()->json(['error' => 'Failed to fetch data'], 500);
+        // Insert predefined tags
+        foreach ($realEstateTags as $tag) {
+            DB::table('categories')->insert([
+                'name' => $tag,
+                'slug' => Str::slug($tag),
+                'description' => $faker->paragraph,
+                'status' => CategoryStatus::Active->name, // Use enum value
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]);
         }
 
-        // Category::factory()->count(20)->create();
-        // $rows = Category::all();
-        echo " Insert: categories \n\n";
-
-        // Enable foreign key checks!
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        echo "Seeded categories: " . implode(', ', $realEstateTags) . "\n";
     }
 }

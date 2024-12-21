@@ -29,7 +29,7 @@ class SocialLoginController extends Controller
             return $redirectTo;
         }
 
-        return redirect()->route('home');
+        return redirect()->url('/');
     }
 
     /**
