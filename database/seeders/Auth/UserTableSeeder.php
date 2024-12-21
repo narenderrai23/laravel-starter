@@ -74,12 +74,15 @@ class UserTableSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
         ];
-        if (User::count() > 0) {
-            foreach ($users as $user_data) {
+        // if (User::count() > 0) {
+        foreach ($users as $user_data) {
+            $user = User::where('email', $user_data['email'])->first();
+
+            if (!$user)
                 $user = User::create($user_data);
 
-                event(new UserCreated($user));
-            }
+            event(new UserCreated($user));
         }
+        // }
     }
 }

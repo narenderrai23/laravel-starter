@@ -64,7 +64,7 @@ class SocialLoginController extends Controller
             return redirect('/');
         }
 
-        return redirect()->intended(route('home', absolute: false));
+        return redirect()->intended(route('backend.dashboard', absolute: false));
     }
 
     /**
@@ -117,7 +117,7 @@ class SocialLoginController extends Controller
 
             flash('Email address is required!')->error()->important();
 
-            return redirect()->intended(route('home', absolute: false));
+            return redirect()->intended(route('backend.dashboard', absolute: false));
         }
 
         $user = User::create([

@@ -4,6 +4,7 @@ namespace Modules\Property\Models;
 
 use Carbon\Carbon;
 use App\Models\BaseModel;
+use App\Models\PropertyImage;
 use Modules\Post\Enums\PostStatus;
 use Spatie\Activitylog\LogOptions;
 use Illuminate\Notifications\Notifiable;
@@ -36,10 +37,11 @@ class Property extends BaseModel
         return $this->belongsTo('Modules\Category\Models\Category');
     }
 
+
     public function images()
-{
-    return $this->hasMany(\App\Models\PropertyImage::class);
-}
+    {
+        return $this->hasMany(PropertyImage::class);
+    }
 
 
     public function tags()

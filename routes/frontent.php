@@ -12,7 +12,8 @@ use App\Http\Controllers\Frontend\FrontendController;
  */
 
 // home route
-Route::group(['as' => 'frontend.'], function () {
+Route::group(['as' => 'frontend.'], routes: function () {
+    // Route::get('/', action: [FrontendController::class, 'index'])->name('home');
     Route::get('/', action: [FrontendController::class, 'index'])->name('index');
 
     Route::view('/about', 'front.about')->name('about'); // About Us page

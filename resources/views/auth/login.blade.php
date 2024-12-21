@@ -13,7 +13,7 @@
                 id="email"
                 name="email"
                 type="email"
-                :value="old('email')"
+                :value="old('email', 'super@admin.com')"
                 required
                 autocomplete="email"
             />
@@ -28,6 +28,7 @@
                 id="password"
                 name="password"
                 type="password"
+                value="IACT@#123"
                 required
                 autocomplete="current-password"
             />

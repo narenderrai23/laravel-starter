@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
                 CategoryDatabaseSeeder::class,
                 TagDatabaseSeeder::class,
                 PostDatabaseSeeder::class,
-                PropertyDatabaseSeeder::class
+                PropertyDatabaseSeeder::class,
+                PropertyImagesTableSeeder::class,
             ]
         );
 
