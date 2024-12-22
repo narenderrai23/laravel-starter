@@ -2,9 +2,10 @@
 
 namespace Modules\Location\database\seeders;
 
+use Carbon\Carbon;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Modules\Location\Models\Location;
 
 class LocationDatabaseSeeder extends Seeder
 {
@@ -15,22 +16,53 @@ class LocationDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // Disable foreign key checks!
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        $faker = \Faker\Factory::create(); // Create a new Faker instance
 
-        /*
-         * Locations Seed
-         * ------------------
-         */
+        $locations = [
+            ['name' => 'Andhra Pradesh'],
+            ['name' => 'Arunachal Pradesh'],
+            ['name' => 'Assam'],
+            ['name' => 'Bihar'],
+            ['name' => 'Chhattisgarh'],
+            ['name' => 'Goa'],
+            ['name' => 'Gujarat'],
+            ['name' => 'Haryana'],
+            ['name' => 'Himachal Pradesh'],
+            ['name' => 'Jharkhand'],
+            ['name' => 'Karnataka'],
+            ['name' => 'Kerala'],
+            ['name' => 'Madhya Pradesh'],
+            ['name' => 'Maharashtra'],
+            ['name' => 'Manipur'],
+            ['name' => 'Meghalaya'],
+            ['name' => 'Mizoram'],
+            ['name' => 'Nagaland'],
+            ['name' => 'Odisha'],
+            ['name' => 'Punjab'],
+            ['name' => 'Rajasthan'],
+            ['name' => 'Sikkim'],
+            ['name' => 'Tamil Nadu'],
+            ['name' => 'Telangana'],
+            ['name' => 'Tripura'],
+            ['name' => 'Uttar Pradesh'],
+            ['name' => 'Uttarakhand'],
+            ['name' => 'West Bengal'],
+            ['name' => 'Delhi'],
+            ['name' => 'Jammu and Kashmir'],
+            ['name' => 'Ladakh'],
+        ];
 
-        // DB::table('locations')->truncate();
-        // echo "Truncate: locations \n";
+        // Add additional fields to each location
+        foreach ($locations as &$location) {
+            $location['slug'] = Str::slug($location['name']);
+            $location['description'] = $faker->paragraph; // Generate a random description
+            $location['status'] = 1; // Default status
+            $location['created_at'] = Carbon::now(); // Current timestamp
+            $location['updated_at'] = Carbon::now(); // Current timestamp
+        }
 
-        Location::factory()->count(20)->create();
-        $rows = Location::all();
-        echo " Insert: locations \n\n";
-
-        // Enable foreign key checks!
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        // Insert into the database
+        DB::table('locations')->insert($locations);
+        echo "Inserted: Indian locations with name, slug, and additional fields \n";
     }
 }

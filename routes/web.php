@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\LanguageController;
-use App\Livewire\Privacy;
 use App\Livewire\Terms;
+use App\Livewire\Privacy;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EstimateController;
+use App\Http\Controllers\LanguageController;
 
 /*
 *
@@ -68,6 +69,11 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend', 'prefix' => 'admin'
      */
     Route::get('/', 'BackendController@index')->name('home');
     Route::get('dashboard', 'BackendController@index')->name('dashboard');
+
+
+    Route::get('queries/index', [EstimateController::class, 'index'])->name(name: 'queries.index');
+    Route::get('/queries/show/{id}', action: [EstimateController::class, 'show'])->name('queries.show');
+
 
     /*
      *

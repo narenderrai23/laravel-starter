@@ -68,20 +68,17 @@ class CategoriesController extends Controller
      */
     public function show($id)
     {
-        $module_title = $this->module_title;
-        $module_name = $this->module_name;
-        $module_path = $this->module_path;
-        $module_icon = $this->module_icon;
-        $module_model = $this->module_model;
-        $module_name_singular = Str::singular($module_name);
-
-        $module_action = 'Show';
-
-        $$module_name_singular = $module_model::findOrFail($id);
-
-        return view(
-            "$module_path.$module_name.show",
-            compact('module_title', 'module_name', 'module_icon', 'module_action', 'module_name_singular', "$module_name_singular")
-        );
+        $properties = \Modules\Property\Models\Property::where('category_id', $id)->latest()->paginate(10);
+        $properties->category = $id;
+        return view("$this->module_path.$this->module_name.show", [
+            'module_title' => $this->module_title,
+            'module_name' => $this->module_name,
+            'module_icon' => $this->module_icon,
+            'module_action' => 'Show',
+            'module_name_singular' => Str::singular($this->module_name),
+            Str::singular($this->module_name) => $this->module_model::findOrFail($id),
+            'properties' => $properties,
+        ]);
     }
+
 }

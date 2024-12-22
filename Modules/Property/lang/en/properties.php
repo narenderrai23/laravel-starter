@@ -9,9 +9,9 @@ return [
     'content' => 'Content',
     'image' => 'Image',
     'category_id' => 'Category',
+    'location_id' => 'Location',
     'type' => 'Type',
     'is_featured' => 'Is Featured',
-    'tags' => 'Tags',
     'status' => 'Status',
     'published_at' => 'Published At',
 
@@ -21,5 +21,21 @@ return [
     'meta_og_image' => 'Meta Open Graph Image',
     'meta_og_url' => 'Meta Open Graph URL',
     'order' => 'Order',
+
+    // Additional Inputs
+    'address' => 'Address',
+    'description' => 'Description',
+    'additional_info' => 'Additional Info',
+    'size' => 'Size',
+    'bedrooms' => 'Bedrooms',
+    'bathrooms' => 'Bathrooms',
+    'garage' => 'Garage',
+    'price' => 'Price',
+    'available_from' => 'Available From',
+    'year_built' => 'Year Built',
+    'cross_streets' => 'Cross Streets',
+    'floors' => 'Floors',
+    'plumbing' => 'Plumbing',
+    'plans' => 'Plans',
 
 ];

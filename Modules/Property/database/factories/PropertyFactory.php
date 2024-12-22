@@ -2,6 +2,7 @@
 
 namespace Modules\Property\database\factories;
 
+use App\Models\Location;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Post\Enums\PostStatus;
@@ -35,6 +36,7 @@ class PropertyFactory extends Factory
             'content' => $this->faker->paragraphs(rand(5, 7), true),
             'type' => PostType::getAllNames()[array_rand(PostType::getAllNames())] ?? 'default',
             'category_id' => Category::query()->inRandomOrder()->value('id'), // Fetch random existing category ID
+            'location_id' => Location::query()->inRandomOrder()->value('id'), // Fetch random existing category ID
             'category_name' => Category::query()->where('id', $this->faker->randomElement(Category::pluck('id')->toArray()))->value('name'),
             'is_featured' => $this->faker->boolean,
             'image' => 'https://picsum.photos/1200/630?random=' . rand(1, 50),

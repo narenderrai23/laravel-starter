@@ -1,17 +1,15 @@
-@extends("front.layouts.app")
+@extends('front.layouts.app')
 
-@section("title")
+@section('title')
     {{ $$module_name_singular->name }} - {{ __($module_title) }}
 @endsection
 
-@section("content")
+@section('content')
     <x-frontend.header-block :title="__($$module_name_singular->name)">
         <x-slot:sub_title>
             <p class="mb-8 leading-relaxed">
-                <a
-                    class="mr-2 rounded bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-800 outline outline-1 outline-gray-800 hover:bg-gray-100 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
-                    href="{{ route("frontend." . $module_name . ".index") }}"
-                >
+                <a class="mr-2 rounded bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-800 outline outline-1 outline-gray-800 hover:bg-gray-100 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600"
+                    href="{{ route('frontend.' . $module_name . '.index') }}">
                     {{ __($module_title) }}
                 </a>
             </p>
@@ -22,10 +20,90 @@
         </p>
     </x-frontend.header-block>
 
-    <section class="bg-white p-6 text-gray-600 dark:bg-gray-700 dark:text-gray-300 sm:p-20">
-        <div class="grid grid-cols-1 gap-6 sm:grid-cols-1">
-            <div class="text-center">
-                {{ $$module_name_singular->description }}
+    <section id="agent-p-2" class="property-details bg_light padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div id="property-2-slider" class="owl-carousel">
+                            @foreach ($properties as $property)
+                                @php
+                                    $property_route = route('frontend.property.show', [$property->id, $property->slug]);
+                                @endphp
+                                <div class="item">
+                                    <div class="property_item bottom40">
+                                        <div class="image">
+                                            <img src="{{ $property->image }}" alt="{{ $property->name }}"
+                                                class="img-responsive">
+                                            <div class="property_meta">
+                                                <span><i class="fa fa-object-group"></i>{{ $property->size }} sq ft </span>
+                                                <span><i class="fa fa-bed"></i>{{ $property->bedrooms }}</span>
+                                                <span><i class="fa fa-bath"></i>{{ $property->bathrooms }} Bathroom</span>
+                                            </div>
+                                            <div class="price">
+                                                <span class="tag">{{ $property->status }}</span>
+                                            </div>
+                                            <div class="overlay">
+                                                <div class="centered">
+                                                    <a class="link_arrow white_border" href="{{ $property_route }}">View
+                                                        Detail</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="proerty_content">
+                                            <div class="proerty_text">
+                                                <h3><a href="{{ $property_route }}">{{ $property->name }}</a>
+                                                </h3>
+                                                <span class="bottom10">{{ $property->location->name }}</span>
+                                                <p><strong>₹{{ number_format($property->price, 2) }} Per Month</strong></p>
+                                            </div>
+                                            <div class="favroute clearfix">
+                                                <p class="pull-left"><i class="icon-calendar2"></i>
+                                                    {{ $property->created_at->diffForHumans() }}</p>
+                                                <ul class="pull-right">
+                                                    <li><a href="#."><i class="icon-video"></i></a></li>
+                                                    <li><a href="#."><i class="icon-like"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                            <div class="item">
+                                <div class="property_item bottom40">
+                                    <div class="image">
+                                        <img src="{{ URL('/assets/') }}/images/property-listing-1.jpg" alt="listin"
+                                            class="img-responsive">
+                                        <div class="property_meta">
+                                            <span><i class="fa fa-object-group"></i>530 sq ft </span>
+                                            <span><i class="fa fa-bed"></i>2</span>
+                                            <span><i class="fa fa-bath"></i>1 Bathroom</span>
+                                        </div>
+                                        <div class="price"><span class="tag">For Sale</span></div>
+                                        <div class="overlay">
+                                            <div class="centered"><a class="link_arrow white_border"
+                                                    href="property_details_1.html">View Detail</a></div>
+                                        </div>
+                                    </div>
+                                    <div class="proerty_content">
+                                        <div class="proerty_text">
+                                            <h3><a href="property_details_2.html">House in New York City</a></h3>
+                                            <span class="bottom10">Merrick Way, Miami, USA</span>
+                                            <p><strong>$8,600 Per Month</strong></p>
+                                        </div>
+                                        <div class="favroute clearfix">
+                                            <p class="pull-left"><i class="icon-calendar2"></i> 3 Days ago</p>
+                                            <ul class="pull-right">
+                                                <li><a href="#."><i class="icon-video"></i></a></li>
+                                                <li><a href="#."><i class="icon-like"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

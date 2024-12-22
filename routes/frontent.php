@@ -25,4 +25,5 @@ Route::group(['as' => 'frontend.'], routes: function () {
 });
 
 
-Route::post('/estimate', [EstimateController::class, 'submitForm'])->name('estimate.submit');
+Route::post('/estimate', action: [EstimateController::class, 'submitForm'])->name('estimate.submit');
+Route::get('/property/search', [EstimateController::class, 'search'])->name('property.search');

@@ -11,7 +11,6 @@ return [
     'category_id' => 'دسته بندی',
     'type' => 'نوع',
     'is_featured' => 'ویژه است',
-    'tags' => 'برچسب ها',
     'status' => 'وضعیت',
     'published_at' => 'منتشر شده در',
 

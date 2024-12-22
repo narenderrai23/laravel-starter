@@ -31,7 +31,6 @@
                 </div>
                 <div class="col-md-12">
                     <div class="row">
-                        {{ $$module_name_singular->images() }}
                         <div class="col-md-12">
                             <div id="property-d-1" class="owl-carousel">
                                 @foreach ($$module_name_singular->images() as $image)

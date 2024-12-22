@@ -37,6 +37,11 @@ class Property extends BaseModel
         return $this->belongsTo('Modules\Category\Models\Category');
     }
 
+    public function location()
+    {
+        return $this->belongsTo('Modules\Location\Models\Location');
+    }
+
 
     public function images()
     {
@@ -44,10 +49,6 @@ class Property extends BaseModel
     }
 
 
-    public function tags()
-    {
-        return $this->morphToMany('Modules\Tag\Models\Tag', 'taggable');
-    }
 
     public function scopePublishedAndScheduled($query)
     {

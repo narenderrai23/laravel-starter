@@ -110,8 +110,8 @@
                             <div class="item">
                                 <div class="property_item bottom40">
                                     <div class="image">
-                                        <img src="{{ $property->image }}"
-                                            alt="{{ $property->name }}" class="img-responsive">
+                                        <img src="{{ $property->image }}" alt="{{ $property->name }}"
+                                            class="img-responsive">
                                         <div class="property_meta">
                                             <span><i class="fa fa-object-group"></i>{{ $property->size }} sq ft </span>
                                             <span><i class="fa fa-bed"></i>{{ $property->bedrooms }}</span>
@@ -131,8 +131,8 @@
                                         <div class="proerty_text">
                                             <h3><a href="{{ $property_route }}">{{ $property->name }}</a>
                                             </h3>
-                                            <span class="bottom10">{{ $property->location }}</span>
-                                            <p><strong>${{ number_format($property->price, 2) }} Per Month</strong></p>
+                                            <span class="bottom10">{{ $property->location->name }}</span>
+                                            <p><strong>₹{{ number_format($property->price, 2) }} Per Month</strong></p>
                                         </div>
                                         <div class="favroute clearfix">
                                             <p class="pull-left"><i class="icon-calendar2"></i>
@@ -146,38 +146,6 @@
                                 </div>
                             </div>
                         @endforeach
-                        <div class="item">
-                            <div class="property_item bottom40">
-                                <div class="image">
-                                    <img src="{{ URL('/assets/') }}/images/property-listing-1.jpg" alt="listin"
-                                        class="img-responsive">
-                                    <div class="property_meta">
-                                        <span><i class="fa fa-object-group"></i>530 sq ft </span>
-                                        <span><i class="fa fa-bed"></i>2</span>
-                                        <span><i class="fa fa-bath"></i>1 Bathroom</span>
-                                    </div>
-                                    <div class="price"><span class="tag">For Sale</span></div>
-                                    <div class="overlay">
-                                        <div class="centered"><a class="link_arrow white_border"
-                                                href="property_details_1.html">View Detail</a></div>
-                                    </div>
-                                </div>
-                                <div class="proerty_content">
-                                    <div class="proerty_text">
-                                        <h3><a href="property_details_2.html">House in New York City</a></h3>
-                                        <span class="bottom10">Merrick Way, Miami, USA</span>
-                                        <p><strong>$8,600 Per Month</strong></p>
-                                    </div>
-                                    <div class="favroute clearfix">
-                                        <p class="pull-left"><i class="icon-calendar2"></i> 3 Days ago</p>
-                                        <ul class="pull-right">
-                                            <li><a href="#."><i class="icon-video"></i></a></li>
-                                            <li><a href="#."><i class="icon-like"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -217,129 +185,45 @@
             <div class="col-md-12">
                 <div class="row">
                     <div id="listing_slider" class="owl-carousel">
-                        <div class="item clearfix">
-                            <div class="project1 clearfix">
-                                <div class="col-md-12 col-sm-12 col-xs-12 padding-left-0 project-images">
-                                    <div class="gri">
-                                        <figure class="effect-layla">
-                                            <img src="{{ URL('/assets/') }}/images/b-d-property.jpg"
-                                                alt="img" />
-                                            <figcaption> </figcaption>
-                                        </figure>
-                                    </div>
-                                    <div
-                                        class="col-md-3 col-sm-3 col-xs-12 project-owl-slidee padding-left-0 project-owl-slideee">
-                                        <div class="item background-color-white">
-                                            <h4>Residential Project-d05</h4>
-                                            <div class="small-title">
-                                                <div class="line1"></div>
-                                                <div class="line2"></div>
-                                                <div class="clearfix"></div>
+                        @foreach ($properties as $property)
+                            @php
+                                $property_route = route('frontend.property.show', [$property->id, $property->slug]);
+                            @endphp
+                            <div class="item clearfix">
+                                <div class="project1 clearfix">
+                                    <div class="col-md-12 col-sm-12 col-xs-12 padding-left-0 project-images">
+                                        <div class="gri">
+                                            <figure class="effect-layla">
+                                                <img src="{{ $property->image ? asset($property->image) : URL('/assets/images/default-property.jpg') }}"
+                                                    alt="{{ $property->name }}" />
+                                                <figcaption></figcaption>
+                                            </figure>
+                                        </div>
+                                        <div
+                                            class="col-md-3 col-sm-3 col-xs-12 project-owl-slidee padding-left-0 project-owl-slideee">
+                                            <div class="item background-color-white">
+                                                <h4>{{ $property->name }}</h4>
+                                                <div class="small-title">
+                                                    <div class="line1"></div>
+                                                    <div class="line2"></div>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <div class="client-loc">
+                                                    <p><span>Location:</span> {{ $property->address ?: 'N/A' }}</p>
+                                                    <p><span>Value:</span> ${{ number_format($property->price, 2) }}
+                                                    </p>
+                                                </div>
+                                                <a href="{{ $property_route }}" class="link_arrow">read more</a>
                                             </div>
-                                            <div class="client-loc">
-                                                <p><span>Client:</span> Bryan Doe Joe</p>
-                                                <p><span>Location:</span> Mountain Line CA 62548</p>
-                                                <p><span>Value:</span> $15,000</p>
-                                            </div>
-                                            <a href="property_details_1.html" class="link_arrow">read more</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="item clearfix">
-                            <div class="project1 clearfix">
-                                <div class="col-md-12 col-sm-12 col-xs-12 padding-left-0 project-images">
-                                    <div class="gri">
-                                        <figure class="effect-layla">
-                                            <img src="{{ URL('/assets/') }}/images/b-d-property-2.jpg"
-                                                alt="img" />
-                                            <figcaption> </figcaption>
-                                        </figure>
-                                    </div>
-                                    <div
-                                        class="col-md-3 col-sm-3 col-xs-12 project-owl-slidee padding-left-0 project-owl-slideee">
-                                        <div class="item background-color-white">
-                                            <h4>Residential Project-d05</h4>
-                                            <div class="small-title">
-                                                <div class="line1"></div>
-                                                <div class="line2"></div>
-                                                <div class="clearfix"></div>
-                                            </div>
-                                            <div class="client-loc">
-                                                <p><span>Client:</span> Bryan Doe Joe</p>
-                                                <p><span>Location:</span> Mountain Line CA 62548</p>
-                                                <p><span>Value:</span> $15,000</p>
-                                            </div>
-                                            <a href="property_details_1.html" class="link_arrow">read more</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item clearfix">
-                            <div class="project1 clearfix">
-                                <div class="col-md-12 col-sm-12 col-xs-12 padding-left-0 project-images">
-                                    <div class="gri">
-                                        <figure class="effect-layla">
-                                            <img src="{{ URL('/assets/') }}/images/b-d-property.jpg"
-                                                alt="img" />
-                                            <figcaption> </figcaption>
-                                        </figure>
-                                    </div>
-                                    <div
-                                        class="col-md-3 col-sm-3 col-xs-12 project-owl-slidee padding-left-0 project-owl-slideee">
-                                        <div class="item background-color-white">
-                                            <h4>Residential Project-d05</h4>
-                                            <div class="small-title">
-                                                <div class="line1"></div>
-                                                <div class="line2"></div>
-                                                <div class="clearfix"></div>
-                                            </div>
-                                            <div class="client-loc">
-                                                <p><span>Client:</span> Bryan Doe Joe</p>
-                                                <p><span>Location:</span> Mountain Line CA 62548</p>
-                                                <p><span>Value:</span> $15,000</p>
-                                            </div>
-                                            <a href="property_details_1.html" class="link_arrow">read more</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item clearfix">
-                            <div class="project1 clearfix">
-                                <div class="col-md-12 col-sm-12 col-xs-12 padding-left-0 project-images">
-                                    <div class="gri">
-                                        <figure class="effect-layla">
-                                            <img src="{{ URL('/assets/') }}/images/b-d-property-2.jpg"
-                                                alt="img" />
-                                            <figcaption> </figcaption>
-                                        </figure>
-                                    </div>
-                                    <div
-                                        class="col-md-3 col-sm-3 col-xs-12 project-owl-slidee padding-left-0 project-owl-slideee">
-                                        <div class="item background-color-white">
-                                            <h4>Residential Project-d05</h4>
-                                            <div class="small-title">
-                                                <div class="line1"></div>
-                                                <div class="line2"></div>
-                                                <div class="clearfix"></div>
-                                            </div>
-                                            <div class="client-loc">
-                                                <p><span>Client:</span> Bryan Doe Joe</p>
-                                                <p><span>Location:</span> Mountain Line CA 62548</p>
-                                                <p><span>Value:</span> $15,000</p>
-                                            </div>
-                                            <a href="property_details_1.html" class="link_arrow">read more</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
     <!-- BEST DEALS -->
@@ -449,7 +333,7 @@
                 @foreach ($$module_name as $$module_name_singular)
                     @php
                         $details_url = route("frontend.$module_name.show", [
-                            ($$module_name_singular->id),
+                            $$module_name_singular->id,
                             $$module_name_singular->slug,
                         ]);
                     @endphp
@@ -581,7 +465,13 @@
 
         <!--Custom Js -->
         <script src="{{ URL('/assets/') }}/js/functions.js"></script>
-
+<!-- Success message handling -->
+@if(session('success'))
+    <script type="text/javascript">
+        // Display success message in an alert box
+        alert('{{ session('success') }}');
+    </script>
+@endif
         <!--Maps & Markers-->
         {{-- <script src="{{ URL('/assets/') }}/js/form.js"></script>
     <script src="{{ URL('/assets/') }}/js/custom-map.js"></script>

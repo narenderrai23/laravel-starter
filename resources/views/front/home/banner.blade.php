@@ -14,11 +14,12 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="search_2 search_2_set">
-                    <form action="" method="GET" id="frmhomesearch" class="findus clearfix">
+                    <form action="{{ route('property.search') }}" method="GET" id="frmhomesearch" class="findus clearfix">
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-12 b-r">
                                 <div class="single-query">
-                                    <input type="text" class="keyword-input" placeholder="keyword">
+                                    <input type="text" class="keyword-input" name="keyword" placeholder="Keyword"
+                                           value="{{ request('keyword') }}">
                                 </div>
                             </div>
 
@@ -28,7 +29,7 @@
                                         <option value="">Location</option>
                                         @foreach (get_all_locations() as $location)
                                             <option value="{{ $location->id }}"
-                                                {{ old('location_id') == $location->id ? 'selected' : '' }}>
+                                                    {{ request('location_id') == $location->id ? 'selected' : '' }}>
                                                 {{ $location->name }}
                                             </option>
                                         @endforeach
@@ -38,19 +39,17 @@
 
                             <div class="col-lg-3 col-md-3 col-sm-12">
                                 <div class="single-query">
-                                    <select class="selectpicker" name="categoty_id" data-live-search="true">
+                                    <select class="selectpicker" name="category_id" data-live-search="true">
                                         <option value="">Property Type</option>
                                         @foreach (get_all_properties() as $type)
                                             <option value="{{ $type->id }}"
-                                                {{ old('categoty_id') == $type->id ? 'selected' : '' }}>
+                                                    {{ request('category_id') == $type->id ? 'selected' : '' }}>
                                                 {{ $type->name }}
                                             </option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
-
-
 
                             <div class="col-md-2 col-sm-3 col-xs-12 text-right">
                                 <div class="query-submit-button form-group">
@@ -59,6 +58,7 @@
                             </div>
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>

@@ -21,6 +21,7 @@ return new class extends Migration {
             $table->longText('content')->nullable();
             $table->string('type')->nullable();
             $table->integer('category_id')->unsigned()->nullable();
+            $table->integer('location_id')->unsigned()->nullable();
             $table->string('category_name')->nullable();
             $table->integer('is_featured')->nullable();
             $table->string('image')->nullable();
