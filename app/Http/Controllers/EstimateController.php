@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Location;
+use App\Models\Contact;
+use App\Mail\ContactMail;
 use Illuminate\Http\Request;
 use App\Models\EstimateQuery;
+use Illuminate\Support\Facades\Mail;
 use Modules\Property\Models\Property;
 
 class EstimateController extends Controller
@@ -62,10 +64,36 @@ class EstimateController extends Controller
         ]);
 
         // Save the data to the database
-        EstimateQuery::create($validated);
+        $query = EstimateQuery::create($validated);
+
+        Mail::to(env('MAIL_ADMIN'))->send(new \App\Mail\QuerySubmitted($query));
 
         // Redirect back with success message
         return redirect()->back()->with('success', 'Your query has been submitted successfully!');
+    }
+
+    public function contactForm(Request $request)
+    {
+        // Validate the incoming form data
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'phone' => 'required|string|max:15',
+            'email' => 'required|email|max:255',
+            'message' => 'required|string',
+        ]);
+
+        // Save the data to the database using the Contact model
+        $contact = Contact::create($validated);
+
+        if (env('MAIL_ADMIN')) {
+
+            // Example: Sending an email (optional)
+            Mail::to(env('MAIL_ADMIN'))->send(mailable: new ContactMail($contact));
+        }
+
+
+        // Redirect back with a success message
+        return redirect()->back()->with('success', 'Your message has been sent successfully!');
     }
 
     public function search(Request $request)

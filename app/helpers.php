@@ -20,11 +20,6 @@ if (!function_exists('app_name')) {
     }
 }
 
-function recent_property()
-{
-    // $property = Property::active()->all();
-    // dd($property);
-}
 
 if (!function_exists('get_all_locations')) {
     function get_all_locations()
@@ -285,7 +280,7 @@ if (!function_exists('logUserAccess')) {
             $auth_text = 'User:' . Auth::user()->name . ' (ID:' . Auth::user()->id . ')';
         }
 
-        \Log::debug(label_case($text) . " | {$auth_text}");
+        \Illuminate\Support\Facades\Log::debug(label_case($text) . " | {$auth_text}");
     }
 }
 

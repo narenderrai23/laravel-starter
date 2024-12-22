@@ -465,13 +465,13 @@
 
         <!--Custom Js -->
         <script src="{{ URL('/assets/') }}/js/functions.js"></script>
-<!-- Success message handling -->
-@if(session('success'))
-    <script type="text/javascript">
-        // Display success message in an alert box
-        alert('{{ session('success') }}');
-    </script>
-@endif
+        <!-- Success message handling -->
+        @if (session('success'))
+            <script type="text/javascript">
+                // Display success message in an alert box
+                alert('{{ session('success') }}');
+            </script>
+        @endif
         <!--Maps & Markers-->
         {{-- <script src="{{ URL('/assets/') }}/js/form.js"></script>
     <script src="{{ URL('/assets/') }}/js/custom-map.js"></script>

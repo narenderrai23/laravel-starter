@@ -16,7 +16,7 @@
                         <p>Want to find out more about DFI Realtors? Please complete the form below and we’ll be back to
                             you shortly.</p>
                         <div class="property-query-area top40">
-              
+
                             <form class="findus" method="POST" action="{{ route('estimate.submit') }}">
                                 @csrf
                                 <div class="row">
@@ -30,7 +30,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                            
+
                                     {{-- Phone Number --}}
                                     <div class="col-md-12">
                                         <div class="single-query">
@@ -41,7 +41,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                            
+
                                     {{-- Location Dropdown --}}
                                     <div class="col-md-12">
                                         <div class="single-query">
@@ -59,7 +59,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                            
+
                                     {{-- Property Type Dropdown --}}
                                     <div class="col-md-12">
                                         <div class="single-query">
@@ -77,7 +77,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                            
+
                                     {{-- Min Beds Dropdown --}}
                                     <div class="col-md-6 col-sm-6">
                                         <div class="single-query">
@@ -95,7 +95,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                            
+
                                     {{-- Min Baths Dropdown --}}
                                     <div class="col-md-6 col-sm-6">
                                         <div class="single-query">
@@ -113,29 +113,29 @@
                                             @enderror
                                         </div>
                                     </div>
-                            
+
                                     {{-- Min Area --}}
                                     <div class="col-md-6 col-sm-6">
                                         <div class="single-query">
                                             <input class="keyword-input" name="min_area" placeholder="Min Area (sq ft)"
-                                                type="text" value="{{ old('min_area') }}">
+                                                type="number" value="{{ old('min_area') }}">
                                             @error('min_area')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
-                            
+
                                     {{-- Max Area --}}
                                     <div class="col-md-6 col-sm-6">
                                         <div class="single-query">
                                             <input class="keyword-input" name="max_area" placeholder="Max Area (sq ft)"
-                                                type="text" value="{{ old('max_area') }}">
+                                                type="number" value="{{ old('max_area') }}">
                                             @error('max_area')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
-                            
+
                                     {{-- Submit Button --}}
                                     <div class="col-md-12">
                                         <div class="query-submit-button">
@@ -144,7 +144,7 @@
                                     </div>
                                 </div>
                             </form>
-                            
+
 
                         </div>
                     </div>
