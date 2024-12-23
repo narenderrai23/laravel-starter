@@ -41,6 +41,8 @@ class EstimateController extends Controller
         );
     }
 
+
+
     public function show($id)
     {
         $query = EstimateQuery::findOrFail($id);
@@ -49,7 +51,7 @@ class EstimateController extends Controller
 
 
     // Handle form submission
-    public function submitForm(Request $request)
+    public function store(Request $request)
     {
         // Validate the incoming form data
         $validated = $request->validate([
@@ -66,35 +68,12 @@ class EstimateController extends Controller
         // Save the data to the database
         $query = EstimateQuery::create($validated);
 
-        Mail::to(env('MAIL_ADMIN'))->send(new \App\Mail\QuerySubmitted($query));
+        Mail::to(mail_admin())->send(new \App\Mail\QuerySubmitted($query));
 
         // Redirect back with success message
         return redirect()->back()->with('success', 'Your query has been submitted successfully!');
     }
 
-    public function contactForm(Request $request)
-    {
-        // Validate the incoming form data
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'phone' => 'required|string|max:15',
-            'email' => 'required|email|max:255',
-            'message' => 'required|string',
-        ]);
-
-        // Save the data to the database using the Contact model
-        $contact = Contact::create($validated);
-
-        if (env('MAIL_ADMIN')) {
-
-            // Example: Sending an email (optional)
-            Mail::to(env('MAIL_ADMIN'))->send(mailable: new ContactMail($contact));
-        }
-
-
-        // Redirect back with a success message
-        return redirect()->back()->with('success', 'Your message has been sent successfully!');
-    }
 
     public function search(Request $request)
     {

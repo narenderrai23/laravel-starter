@@ -25,6 +25,11 @@ class PermissionRoleTableSeeder extends Seeder
          * Create Roles and Assign Permissions to Roles.
          */
         $super_admin = Role::firstOrCreate(['id' => '1'], ['name' => 'super admin']);
+        $allPermissions = Permission::all();
+        $super_admin->syncPermissions($allPermissions);
+        // Grant all permissions to super admin
+        $allPermissions = Permission::all();
+        $super_admin->syncPermissions($allPermissions);
 
         $admin = Role::firstOrCreate(['id' => '2'], ['name' => 'administrator']);
         $admin->givePermissionTo(['view_backend', 'edit_settings']);

@@ -56,6 +56,11 @@ $notifications_latest = optional($notifications)->take(5);
                     'icon' => 'fa-solid fa-gears',
                 ],
                 [
+                    'name' => 'contact',
+                    'text' => __('Contact'),
+                    'icon' => 'fa-solid fa-gears',
+                ],
+                [
                     'name' => 'settings',
                     'text' => __('Settings'),
                     'icon' => 'fa-solid fa-gears',

@@ -3,7 +3,6 @@
 use App\Models\Location;
 use Illuminate\Support\Facades\Auth;
 use Modules\Category\Models\Category;
-use Modules\Property\Models\Property;
 
 /*
  * Global helpers file with misc functions.
@@ -19,6 +18,20 @@ if (!function_exists('app_name')) {
         return config('app.name');
     }
 }
+
+if (!function_exists('mail_admin')) {
+    /**
+     * Helper to grab the application name.
+     *
+     * @return mixed
+     */
+    function mail_admin()
+    {
+        return "narender.neet@gmail.com";
+    }
+}
+
+
 
 
 if (!function_exists('get_all_locations')) {
