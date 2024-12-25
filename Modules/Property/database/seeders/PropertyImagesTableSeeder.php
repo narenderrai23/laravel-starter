@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Modules\Property\database\seeders;
 
 use Illuminate\Database\Seeder;
 use Modules\Property\Models\Property;
