@@ -34,41 +34,6 @@
                     <div class="agent-p-form p-t-30">
 
                         <div class="row">
-                            {{-- <form class="callus padding-bottom" id="contact-form" onSubmit="return false">
-
-                                <div class="form-group">
-                                    <div id="result">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12">
-                                    <div class="single-query">
-                                        <input type="text" class ="keyword-input" placeholder="Name" name="name"
-                                            id="name">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="single-query">
-                                        <input type="text" class ="keyword-input" placeholder="Phone" name="phone"
-                                            id="phone">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="single-query">
-                                        <input type="email" class ="keyword-input" placeholder="E - mail" name="email"
-                                            id="email">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="single-query">
-                                        <textarea name="message" placeholder="Message" id="message"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <button type="submit" class="btn_fill" id="btn_submit"
-                                        name="btn_submit">Submit</button>
-                                </div>
-                            </form> --}}
                             <form class="callus padding-bottom" id="contact-form" method="POST" action="{{ route('contact.submit') }}">
                                 @csrf <!-- Protects the form from CSRF attacks -->
 

@@ -6,12 +6,9 @@ use App\Authorizable;
 use App\Http\Controllers\Backend\BackendBaseController;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Modules\Post\Enums\PostStatus;
-use Modules\Post\Enums\PostType;
 
 class PropertiesController extends BackendBaseController
 {
@@ -40,14 +37,12 @@ class PropertiesController extends BackendBaseController
     {
         $module_title = $this->module_title;
         $module_name = $this->module_name;
-        $module_path = $this->module_path;
-        $module_icon = $this->module_icon;
         $module_model = $this->module_model;
         $module_name_singular = Str::singular($module_name);
 
         $module_action = 'Store';
 
-        $validated_data = $request->validate([
+        $request->validate([
             'name' => 'required|max:191',
             'slug' => 'nullable|max:191',
             'intro' => 'required',
@@ -55,7 +50,6 @@ class PropertiesController extends BackendBaseController
             'image' => 'required|max:191',
             'category_id' => 'required|integer',
             'location_id' => 'required|integer',
-            'type' => Rule::enum(PostType::class),
             'is_featured' => 'required|integer',
             'status' => Rule::enum(PostStatus::class),
             'published_at' => 'required|date',
@@ -67,12 +61,14 @@ class PropertiesController extends BackendBaseController
         ]);
 
         $data['created_by_name'] = auth()->user()->name;
+        $$module_name_singular = $module_model::create($request->all());
 
-        $$module_name_singular = $module_model::create($data);
+        $this->handleProfileImage($request, $$module_name_singular);
 
-        flash("New '".Str::singular($module_title)."' Added")->success()->important();
 
-        logUserAccess($module_title.' '.$module_action.' | Id: '.$$module_name_singular->id);
+        flash("New '" . Str::singular($module_title) . "' Added")->success()->important();
+
+        logUserAccess($module_title . ' ' . $module_action . ' | Id: ' . $$module_name_singular->id);
 
         return redirect("admin/{$module_name}");
     }

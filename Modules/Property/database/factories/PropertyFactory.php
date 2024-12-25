@@ -6,7 +6,6 @@ use App\Models\Location;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Post\Enums\PostStatus;
-use Modules\Post\Enums\PostType;
 use Modules\Category\Models\Category;
 use Modules\Property\Models\Property;
 
@@ -34,7 +33,6 @@ class PropertyFactory extends Factory
             'slug' => $this->faker->unique()->slug,
             'intro' => $this->faker->paragraph,
             'content' => $this->faker->paragraphs(rand(5, 7), true),
-            'type' => PostType::getAllNames()[array_rand(PostType::getAllNames())] ?? 'default',
             'category_id' => Category::query()->inRandomOrder()->value('id'), // Fetch random existing category ID
             'location_id' => Location::query()->inRandomOrder()->value('id'), // Fetch random existing category ID
             'category_name' => Category::query()->where('id', $this->faker->randomElement(Category::pluck('id')->toArray()))->value('name'),
@@ -51,7 +49,6 @@ class PropertyFactory extends Factory
             'moderated_by' => $this->faker->randomDigitNotNull(),
             'moderated_at' => $this->faker->optional()->dateTimeThisYear(),
             'created_by' => $this->faker->randomDigitNotNull(),
-            'created_by_name' => $this->faker->name,
             'updated_by' => $this->faker->randomDigitNotNull(),
             'deleted_by' => $this->faker->optional()->randomDigitNotNull(),
             'address' => $this->faker->address,
@@ -67,7 +64,6 @@ class PropertyFactory extends Factory
             'cross_streets' => $this->faker->streetName,
             'floors' => $this->faker->numberBetween(1, 3),
             'plumbing' => $this->faker->randomElement(['Excellent', 'Good', 'Needs repair']),
-            'plans' => json_encode([$this->faker->imageUrl(600, 400, 'property-plan', true), $this->faker->imageUrl(600, 400, 'property-plan', true)]),
             'published_at' => $this->faker->optional()->dateTimeBetween('-1 years', 'now'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),

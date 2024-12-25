@@ -131,7 +131,7 @@
                                         <div class="proerty_text">
                                             <h3><a href="{{ $property_route }}">{{ $property->name }}</a>
                                             </h3>
-                                            <span class="bottom10">{{ $property->location->name }}</span>
+                                            <span class="bottom10">{{ $property->location->name ?? null }}</span>
                                             <p><strong>₹{{ number_format($property->price, 2) }} Per Month</strong></p>
                                         </div>
                                         <div class="favroute clearfix">

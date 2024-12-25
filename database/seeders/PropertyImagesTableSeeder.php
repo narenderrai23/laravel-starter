@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\PropertyImage;
 use Illuminate\Database\Seeder;
 use Modules\Property\Models\Property;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class PropertyImagesTableSeeder extends Seeder
 {
@@ -19,12 +18,12 @@ class PropertyImagesTableSeeder extends Seeder
         if ($property) {
             PropertyImage::create([
                 'property_id' => $property->id,
-                'path' => 'images/property-d-1-1.jpg',
+                'image' => 'images/property-d-1-1.jpg',
             ]);
 
             PropertyImage::create([
                 'property_id' => $property->id,
-                'path' => 'images/property-d-1-2.jpg',
+                'image' => 'images/property-d-1-2.jpg',
             ]);
         }
     }

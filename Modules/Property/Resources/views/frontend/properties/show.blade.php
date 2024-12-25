@@ -33,16 +33,14 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div id="property-d-1" class="owl-carousel">
-                                @foreach ($$module_name_singular->images() as $image)
-                                    <div class="item">
-                                        <img src="{{ asset('storage/' . $image->path) }}" alt="image" />
+                                @foreach ($property->images()->get() as $image)
+                                    <div class="item"><img src="{{ asset('storage/' . $image->image) }}" alt="image" />
                                     </div>
                                 @endforeach
                             </div>
-                            <div id="property-d-1" class="owl-carousel">
-                                @foreach ($$module_name_singular->images() as $image)
-                                    <div class="item">
-                                        <img src="{{ asset('storage/' . $image->path) }}" alt="Property Image">
+                            <div id="property-d-1-2" class="owl-carousel">
+                                @foreach ($property->images()->get() as $image)
+                                    <div class="item"><img src="{{ asset('storage/' . $image->image) }}" alt="image" />
                                     </div>
                                 @endforeach
                             </div>
@@ -61,7 +59,6 @@
                                         <span><i class="fa fa-bath"></i>{{ $property->bathrooms }} Bathrooms</span>
                                         <span><i class="fa fa-car"></i>{{ $property->garage }} Garage</span>
                                     </div>
-                                    <a class="link_arrow top30" href="#.">Read More</a>
                                 </div>
                             </div>
                             <div class="row margin_bottom">
@@ -90,7 +87,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td><b>Available From</b></td>
-                                                    {{-- <td class="text-right">{{ $property->available_from->format('d-m-Y') }} --}}
+                                                    <td class="text-right">{{ $property->available_from }}
                                                     </td>
                                                 </tr>
                                             </tbody>

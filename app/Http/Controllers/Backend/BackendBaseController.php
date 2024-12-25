@@ -60,7 +60,7 @@ class BackendBaseController extends Controller
 
         $$module_name = $module_model::paginate(15);
 
-        logUserAccess($module_title.' '.$module_action);
+        logUserAccess($module_title . ' ' . $module_action);
 
         return view(
             "{$module_path}.{$module_name}.index_datatable",
@@ -91,10 +91,10 @@ class BackendBaseController extends Controller
         }
 
         $query_data = $module_model::where('name', 'LIKE', "%{$term}%")
-        ->orWhere('slug', 'LIKE', "%{$term}%")
-        // ->active()
-        ->limit(7)
-        ->get();
+            ->orWhere('slug', 'LIKE', "%{$term}%")
+            // ->active()
+            ->limit(7)
+            ->get();
 
         $$module_name = [];
 
@@ -125,7 +125,7 @@ class BackendBaseController extends Controller
         $module_action = 'List';
 
         $page_heading = label_case($module_title);
-        $title = $page_heading.' '.label_case($module_action);
+        $title = $page_heading . ' ' . label_case($module_action);
 
         $$module_name = $module_model::select('id', 'name', 'updated_at');
 
@@ -170,7 +170,7 @@ class BackendBaseController extends Controller
 
         $module_action = 'Create';
 
-        logUserAccess($module_title.' '.$module_action);
+        logUserAccess($module_title . ' ' . $module_action);
 
         return view(
             "{$module_path}.{$module_name}.create",
@@ -199,9 +199,9 @@ class BackendBaseController extends Controller
 
         $$module_name_singular = $module_model::create($request->all());
 
-        flash("New '".Str::singular($module_title)."' Added")->success()->important();
+        flash("New '" . Str::singular($module_title) . "' Added")->success()->important();
 
-        logUserAccess($module_title.' '.$module_action.' | Id: '.$$module_name_singular->id);
+        logUserAccess($module_title . ' ' . $module_action . ' | Id: ' . $$module_name_singular->id);
 
         return redirect("admin/{$module_name}");
     }
@@ -225,7 +225,7 @@ class BackendBaseController extends Controller
 
         $$module_name_singular = $module_model::findOrFail($id);
 
-        logUserAccess($module_title.' '.$module_action.' | Id: '.$$module_name_singular->id);
+        logUserAccess($module_title . ' ' . $module_action . ' | Id: ' . $$module_name_singular->id);
 
         return view(
             "{$module_path}.{$module_name}.show",
@@ -252,12 +252,13 @@ class BackendBaseController extends Controller
         $module_action = 'Edit';
 
         $$module_name_singular = $module_model::findOrFail($id);
+        $imagePath = $$module_name_singular->image ?? null; // Adjust 'image' to your database field or relationship.
 
-        logUserAccess($module_title.' '.$module_action.' | Id: '.$$module_name_singular->id);
+        logUserAccess($module_title . ' ' . $module_action . ' | Id: ' . $$module_name_singular->id);
 
         return view(
             "{$module_path}.{$module_name}.edit",
-            compact('module_title', 'module_name', 'module_path', 'module_icon', 'module_action', 'module_name_singular', "{$module_name_singular}")
+            compact('module_title', 'module_name', 'module_path', 'module_icon', 'module_action', 'module_name_singular', "{$module_name_singular}", 'imagePath')
         );
     }
 
@@ -287,12 +288,32 @@ class BackendBaseController extends Controller
 
         $$module_name_singular->update($request->all());
 
-        flash(Str::singular($module_title)."' Updated Successfully")->success()->important();
+        $this->handleProfileImage($request, $$module_name_singular);
 
-        logUserAccess($module_title.' '.$module_action.' | Id: '.$$module_name_singular->id);
+
+        flash(Str::singular($module_title) . "' Updated Successfully")->success()->important();
+
+        logUserAccess($module_title . ' ' . $module_action . ' | Id: ' . $$module_name_singular->id);
 
         return redirect()->route("backend.{$module_name}.show", $$module_name_singular->id);
     }
+
+    public function handleProfileImage($request, $model)
+    {
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $file) {
+                $path = $file->store('gallery', 'public'); // stores in storage/app/images/
+
+                // Create a new image entry for each uploaded file
+                $model->images()->create([
+                    'property_id' => $model->id,
+                    'image' => $path,
+                ]);
+            }
+        }
+    }
+
+
 
     /**
      * Destroys a record from the database.
@@ -319,9 +340,9 @@ class BackendBaseController extends Controller
 
         $$module_name_singular->delete();
 
-        flash(label_case($module_name_singular).' Deleted Successfully!')->success()->important();
+        flash(label_case($module_name_singular) . ' Deleted Successfully!')->success()->important();
 
-        logUserAccess($module_title.' '.$module_action.' | Id: '.$$module_name_singular->id);
+        logUserAccess($module_title . ' ' . $module_action . ' | Id: ' . $$module_name_singular->id);
 
         return redirect("admin/{$module_name}");
     }
@@ -345,7 +366,7 @@ class BackendBaseController extends Controller
 
         $$module_name = $module_model::onlyTrashed()->orderBy('deleted_at', 'desc')->paginate();
 
-        logUserAccess($module_title.' '.$module_action);
+        logUserAccess($module_title . ' ' . $module_action);
 
         return view(
             "{$module_path}.{$module_name}.trash",
@@ -378,9 +399,9 @@ class BackendBaseController extends Controller
         $$module_name_singular = $module_model::withTrashed()->find($id);
         $$module_name_singular->restore();
 
-        flash(label_case($module_name_singular).' Data Restoreded Successfully!')->success()->important();
+        flash(label_case($module_name_singular) . ' Data Restoreded Successfully!')->success()->important();
 
-        logUserAccess($module_title.' '.$module_action.' | Id: '.$$module_name_singular->id);
+        logUserAccess($module_title . ' ' . $module_action . ' | Id: ' . $$module_name_singular->id);
 
         return redirect("admin/{$module_name}");
     }

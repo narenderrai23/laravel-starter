@@ -19,7 +19,6 @@ return new class extends Migration {
             $table->string('slug')->nullable();
             $table->text('intro')->nullable();
             $table->longText('content')->nullable();
-            $table->string('type')->nullable();
             $table->integer('category_id')->unsigned()->nullable();
             $table->integer('location_id')->unsigned()->nullable();
             $table->string('category_name')->nullable();
@@ -40,7 +39,6 @@ return new class extends Migration {
             $table->datetime('moderated_at')->nullable();
 
             $table->integer('created_by')->unsigned()->nullable();
-            $table->string('created_by_name')->nullable();
             $table->integer('updated_by')->unsigned()->nullable();
             $table->integer('deleted_by')->unsigned()->nullable();
 
@@ -57,7 +55,6 @@ return new class extends Migration {
             $table->string('cross_streets')->nullable();
             $table->integer('floors')->nullable();
             $table->string('plumbing')->nullable();
-            $table->json('plans')->nullable();
 
             $table->timestamp('published_at')->nullable();
             $table->timestamps();

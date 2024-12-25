@@ -9,7 +9,7 @@
 
             {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
             {!! field_required($required) !!}
-            {{ html()->text($field_name)->placeholder($field_lable)->class('form-control')->attributes(["$required"]) }}
+            {{ html()->text($field_name)->placeholder($field_lable)->class('form-control') }}
         </div>
     </div>
 
@@ -23,22 +23,7 @@
 
             {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
             {!! field_required($required) !!}
-            {{ html()->text($field_name)->placeholder($field_lable)->class('form-control')->attributes(["$required"]) }}
-        </div>
-    </div>
-
-    <div class="col-12 col-sm-4 mb-3">
-        <div class="form-group">
-            <?php
-            $field_name = 'created_by_alias';
-            $field_lable = __("property::$module_name.$field_name");
-            $field_lable = "Hide Author User's Name and use Alias";
-            $required = '';
-            ?>
-
-            {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
-            {!! field_required($required) !!}
-            {{ html()->text($field_name)->placeholder($field_lable)->class('form-control')->attributes(["$required"]) }}
+            {{ html()->text($field_name)->placeholder($field_lable)->class('form-control') }}
         </div>
     </div>
 </div>
@@ -53,7 +38,7 @@
 
             {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
             {!! field_required($required) !!}
-            {{ html()->textarea($field_name)->placeholder($field_lable)->class('form-control')->attributes(["$required"]) }}
+            {{ html()->textarea($field_name)->placeholder($field_lable)->class('form-control') }}
         </div>
     </div>
 </div>
@@ -68,7 +53,7 @@
 
             {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
             {!! field_required($required) !!}
-            {{ html()->textarea($field_name)->placeholder($field_lable)->class('form-control')->attributes(["$required"]) }}
+            {{ html()->textarea($field_name)->placeholder($field_lable)->class('form-control') }}
         </div>
     </div>
 </div>
@@ -84,7 +69,7 @@
             {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
             {!! field_required($required) !!}
             <div class="input-group mb-3">
-                {{ html()->text($field_name)->placeholder($field_lable)->class('form-control')->attributes(["$required", 'aria-label' => 'Image', 'aria-describedby' => 'button-image']) }}
+                {{ html()->text($field_name)->placeholder($field_lable)->class('form-control')->attributes(['aria-label' => 'Image', 'aria-describedby' => 'button-image']) }}
                 <button class="btn btn-outline-info" id="button-image" data-input="{{ $field_name }}" type="button">
                     <i class="fas fa-folder-open"></i>
                     &nbsp;
@@ -103,7 +88,16 @@
             $field_label = __("property::$module_name.$field_name");
             $required = 'required';
             ?>
-            <label for="{{ $field_name }}" class="form-label">{{ $field_label }}</label>
+            {{ html()->label($field_label, $field_name)->class('form-label')->for($field_name) }}
+            {!! field_required($required) !!}
+            {{ html()->file($field_name . '[]')->class('form-control')->attributes([
+                    'multiple' => true,
+                    'accept' => 'image/*', // Only accept image files
+                    'aria-label' => 'Images',
+                    'aria-describedby' => 'button-images',
+                ]) }}
+
+            {{-- <label for="{{ $field_name }}" class="form-label">{{ $field_label }}</label>
             {!! field_required($required) !!}
             <div class="input-group mb-3">
                 <input type="file" name="{{ $field_name }}[]" id="{{ $field_name }}" class="form-control"
@@ -113,7 +107,7 @@
                     <i class="fas fa-folder-open"></i>
                     &nbsp;@lang('Browse')
                 </button>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>
@@ -133,7 +127,7 @@
 
             {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
             {!! field_required($required) !!}
-            {{ html()->select($field_name, $field_options, $selected)->placeholder($field_lable)->class('form-select select2-category')->attributes(["$required"]) }}
+            {{ html()->select($field_name, $field_options, $selected)->placeholder($field_lable)->class('form-select select2-category') }}
         </div>
     </div>
     <div class="col-12 col-sm-4 mb-3">
@@ -149,22 +143,7 @@
 
             {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
             {!! field_required($required) !!}
-            {{ html()->select($field_name, $field_options, $selected)->placeholder($field_lable)->class('form-select select2-location')->attributes(["$required"]) }}
-        </div>
-    </div>
-    <div class="col-12 col-sm-4 mb-3">
-        <div class="form-group">
-            <?php
-            $field_name = 'type';
-            $field_lable = __("property::$module_name.$field_name");
-            $field_lable = __('Select an option');
-            $required = 'required';
-            $select_options = \Modules\Post\Enums\PostType::toArray();
-            ?>
-
-            {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
-            {!! field_required($required) !!}
-            {{ html()->select($field_name, $select_options)->class('form-select')->attributes(["$required"]) }}
+            {{ html()->select($field_name, $field_options, $selected)->placeholder($field_lable)->class('form-select select2-location') }}
         </div>
     </div>
     <div class="col-12 col-sm-4 mb-3">
@@ -182,7 +161,7 @@
 
             {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
             {!! field_required($required) !!}
-            {{ html()->select($field_name, $select_options)->class('form-select')->attributes(["$required"]) }}
+            {{ html()->select($field_name, $select_options)->class('form-select') }}
         </div>
     </div>
 </div>
@@ -199,7 +178,7 @@
 
             {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
             {!! field_required($required) !!}
-            {{ html()->select($field_name, $select_options)->placeholder($field_lable)->class('form-select')->attributes(["$required"]) }}
+            {{ html()->select($field_name, $select_options)->placeholder($field_lable)->class('form-select') }}
         </div>
     </div>
     <div class="col-12 col-sm-6 mb-3">
@@ -212,7 +191,7 @@
 
             {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
             {!! field_required($required) !!}
-            {{ html()->datetime($field_name)->placeholder($field_lable)->class('form-control')->attributes(["$required"]) }}
+            {{ html()->datetime($field_name)->placeholder($field_lable)->class('form-control') }}
         </div>
     </div>
 </div>
@@ -385,19 +364,6 @@
             {{ html()->text($field_name)->placeholder($field_lable)->class('form-control') }}
         </div>
     </div>
-
-    <!-- Plans -->
-    <div class="col-12 col-sm-6 mb-3">
-        <div class="form-group">
-            <?php
-            $field_name = 'plans';
-            $field_label = __("property::$module_name.$field_name");
-            $field_lable = __('Enter plans in JSON format');
-            ?>
-            {{ html()->label($field_label, $field_name)->class('form-label')->for($field_name) }}
-            {{ html()->textarea($field_name)->placeholder($field_lable)->class('form-control')->attributes(['rows' => 5]) }}
-        </div>
-    </div>
 </div>
 
 
@@ -414,7 +380,7 @@
 
             {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
             {!! field_required($required) !!}
-            {{ html()->text($field_name)->placeholder($field_lable)->class('form-control')->attributes(["$required"]) }}
+            {{ html()->text($field_name)->placeholder($field_lable)->class('form-control') }}
         </div>
     </div>
     <div class="col-12 col-sm-5 mb-3">
@@ -427,7 +393,7 @@
 
             {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
             {!! field_required($required) !!}
-            {{ html()->text($field_name)->placeholder($field_lable)->class('form-control')->attributes(["$required"]) }}
+            {{ html()->text($field_name)->placeholder($field_lable)->class('form-control') }}
         </div>
     </div>
     <div class="col-12 col-sm-2 mb-3">
@@ -440,7 +406,7 @@
 
             {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
             {!! field_required($required) !!}
-            {{ html()->number($field_name)->placeholder($field_lable)->class('form-control')->attributes(["$required"]) }}
+            {{ html()->number($field_name)->placeholder($field_lable)->class('form-control') }}
         </div>
     </div>
 </div>
@@ -455,7 +421,7 @@
 
             {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
             {!! field_required($required) !!}
-            {{ html()->text($field_name)->placeholder($field_lable)->class('form-control')->attributes(["$required"]) }}
+            {{ html()->text($field_name)->placeholder($field_lable)->class('form-control') }}
         </div>
     </div>
     <div class="col-12 col-sm-6 mb-3">
@@ -468,7 +434,7 @@
 
             {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
             {!! field_required($required) !!}
-            {{ html()->text($field_name)->placeholder($field_lable)->class('form-control')->attributes(["$required"]) }}
+            {{ html()->text($field_name)->placeholder($field_lable)->class('form-control') }}
         </div>
     </div>
 </div>

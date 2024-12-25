@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 bottom40">
-                <h2 class="text-uppercase">Recent <span class="color_red">PROPERTY</span></h2>
+                <h2 class="text-uppercase">Search <span class="color_red">PROPERTY</span></h2>
                 <div class="line_1"></div>
                 <div class="line_2"></div>
                 <div class="line_3"></div>

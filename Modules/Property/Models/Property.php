@@ -48,8 +48,6 @@ class Property extends BaseModel
         return $this->hasMany(PropertyImage::class);
     }
 
-
-
     public function scopePublishedAndScheduled($query)
     {
         return $query->where('status', '=', PostStatus::Published->value);

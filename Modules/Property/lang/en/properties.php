@@ -7,6 +7,7 @@ return [
     'intro' => 'Intro',
     'content' => 'Content',
     'image' => 'Image',
+    'images' => 'Gallery Image',
     'category_id' => 'Category',
     'location_id' => 'Location',
     'type' => 'Type',
