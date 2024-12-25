@@ -4,7 +4,6 @@ return [
 
     'name' => 'Name',
     'slug' => 'Slug',
-    'created_by_alias' => 'Author Name Alias',
     'intro' => 'Intro',
     'content' => 'Content',
     'image' => 'Image',

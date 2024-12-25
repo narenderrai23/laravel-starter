@@ -4,7 +4,6 @@ return [
 
     'name' => 'نام',
     'slug' => 'نامک',
-    'created_by_alias' => 'نام مستعار نویسنده',
     'intro' => 'معرفی',
     'content' => 'محتوا',
     'image' => 'تصویر',

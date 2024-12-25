@@ -31,10 +31,6 @@
                     <!-- Author and Publish Info -->
                     <div class="mb-20 d-md-flex justify-content-between">
                         <div>
-                            {{ __('Written by') }}:
-                            {{ isset($$module_name_singular->created_by_alias) ? $$module_name_singular->created_by_alias : $$module_name_singular->created_by_name }}
-                        </div>
-                        <div>
                             {{ __('Published at') }}: {{ $$module_name_singular->published_at }}
                         </div>
                     </div>

@@ -29,20 +29,6 @@
         </div>
     </div>
 
-    <div class="col-12 col-sm-4 mb-3">
-        <div class="form-group">
-            <?php
-            $field_name = "created_by_alias";
-            $field_lable = __("post::$module_name.$field_name");
-            $field_placeholder = "Hide Author User's Name and use Alias";
-            $required = "";
-            ?>
-
-            {{ html()->label($field_lable, $field_name)->class("form-label")->for($field_name) }}
-            {!! field_required($required) !!}
-            {{ html()->text($field_name)->placeholder($field_placeholder)->class("form-control")->attributes(["$required"]) }}
-        </div>
-    </div>
 </div>
 <div class="row">
     <div class="col-12 mb-3">

@@ -56,7 +56,6 @@ class PostsController extends BackendBaseController
         $validated_data = $request->validate([
             'name' => 'required|max:191',
             'slug' => 'nullable|max:191',
-            'created_by_alias' => 'nullable|max:191',
             'intro' => 'required',
             'content' => 'required',
             'image' => 'required|max:191',
@@ -111,7 +110,6 @@ class PostsController extends BackendBaseController
         $validated_data = $request->validate([
             'name' => 'required|max:191',
             'slug' => 'nullable|max:191',
-            'created_by_alias' => 'nullable|max:191',
             'intro' => 'required',
             'content' => 'required',
             'image' => 'required|max:191',

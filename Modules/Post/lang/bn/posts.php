@@ -4,7 +4,6 @@ return [
 
     'name' => 'নাম',
     'slug' => 'Slug',
-    'created_by_alias' => 'Author Name Alias',
     'intro' => 'ইন্ট্রো',
     'content' => 'কন্টেন্ট',
     'image' => 'ছবি',

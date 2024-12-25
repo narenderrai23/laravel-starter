@@ -28,21 +28,6 @@
             {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required"]) }}
         </div>
     </div>
-
-    <div class="col-12 col-sm-4 mb-3">
-        <div class="form-group">
-            <?php
-            $field_name = 'created_by_alias';
-            $field_lable = __("property::$module_name.$field_name");
-            $field_placeholder = "Hide Author User's Name and use Alias";
-            $required = '';
-            ?>
-
-            {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
-            {!! field_required($required) !!}
-            {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required"]) }}
-        </div>
-    </div>
 </div>
 <div class="row">
     <div class="col-12 mb-3">
@@ -564,27 +549,6 @@
                 allowClear: true,
                 ajax: {
                     url: '{{ route('backend.locations.index_list') }}',
-                    dataType: 'json',
-                    data: function(params) {
-                        return {
-                            q: $.trim(params.term),
-                        };
-                    },
-                    processResults: function(data) {
-                        return {
-                            results: data,
-                        };
-                    },
-                    cache: true,
-                },
-            });
-
-            $('.select2-tags').select2({
-                theme: 'bootstrap-5',
-                placeholder: '@lang('Select an option')',
-                allowClear: true,
-                ajax: {
-                    url: '{{ route('backend.tags.index_list') }}',
                     dataType: 'json',
                     data: function(params) {
                         return {

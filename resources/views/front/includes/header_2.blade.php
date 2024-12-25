@@ -63,7 +63,7 @@
                                 <h4>Email Address</h4>
                             </li>
                             <li>
-                                <p><a href="#">dfigurgaon@gmail.com</a></p>
+                                <p><a href="mailto:{{ setting('email') }}">{{ setting('email') }}</a></p>
                             </li>
                         </ul>
                     </div>

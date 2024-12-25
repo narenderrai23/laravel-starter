@@ -52,7 +52,6 @@ class PropertyFactory extends Factory
             'moderated_at' => $this->faker->optional()->dateTimeThisYear(),
             'created_by' => $this->faker->randomDigitNotNull(),
             'created_by_name' => $this->faker->name,
-            'created_by_alias' => $this->faker->userName,
             'updated_by' => $this->faker->randomDigitNotNull(),
             'deleted_by' => $this->faker->optional()->randomDigitNotNull(),
             'address' => $this->faker->address,

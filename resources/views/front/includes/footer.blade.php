@@ -9,30 +9,31 @@
                     <ul class="list-inline mt-5">
                         <li class="m-0 pl-10 pr-10">
                             <i class="fa fa-phone text-theme-color-2 mr-5"></i>
-                            <a class="text-gray" href="#.">+911244206611 , 9811396176</a>
+                            <a class="text-gray" href="tel:+911244206611">+91 124 4206611</a>,
+                            <a class="text-gray" href="tel:9811396176">9811396176</a>
                         </li>
                         <li class="m-0 pl-10 pr-10">
                             <i class="fa fa-envelope-o text-theme-color-2 mr-5"></i>
-                            <a class="text-gray" href="#.">dfigurgaon@gmail.com</a>
+                            <a class="text-gray" href="mailto:{{ setting('email') }}">{{ setting('email') }}</a>
                         </li>
                     </ul>
 
                     <div class="widget dark">
                         <ul class="socials">
                             <li>
-                                <a href="#."><i class="fa fa-facebook"></i></a>
+                                <a href="{{ setting("facebook_url") }}"><i class="fa fa-facebook"></i></a>
                             </li>
                             <li>
-                                <a href="#."><i class="fa fa-twitter"></i></a>
+                                <a href="{{ setting("twitter_url") }}"><i class="fa fa-twitter"></i></a>
                             </li>
                             <li>
-                                <a href="#."><i class="fa fa-youtube"></i></a>
+                                <a href="{{ setting("youtube_url") }}"><i class="fa fa-youtube"></i></a>
                             </li>
                             <li>
-                                <a href="#."><i class="fa fa-instagram"></i></a>
+                                <a href="{{ setting("instagram_url") }}"><i class="fa fa-instagram"></i></a>
                             </li>
                             <li>
-                                <a href="#."><i class="fa fa-pinterest"></i></a>
+                                <a href="{{ setting("website_url") }}"><i class="fa fa-pinterest"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -47,10 +48,6 @@
                         <div class="clearfix"></div>
                     </div>
                     <ul class="list angle-double-right list-border">
-                        {{-- <li><a href="#.">Home </a></li>
-                        <li><a href="#.">About Us </a></li>
-                        <li><a href="#.">Services </a></li>
-                        <li><a href="#.">Contact Us </a></li> --}}
 
                         <ul class="list angle-double-right list-border">
                             <li><a href="{{ url('/') }}">Home</a></li>
@@ -70,12 +67,6 @@
                         <div class="line2 background-color-white"></div>
                         <div class="clearfix"></div>
                     </div>
-                    {{-- <ul class="list list-border">
-                        <li><a href="#.">Residential</a></li>
-                        <li><a href="#.">Commercial</a></li>
-                        <li><a href="#.">Careers</a></li>
-                        <li><a href="#.">Blogs </a></li>
-                    </ul> --}}
                     <ul class="list list-border">
                         <li><a href="{{ route('frontend.career') }}">Careers</a></li>
                         <li><a href="{{ route('frontend.posts.index') }}">Blogs</a></li>

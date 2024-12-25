@@ -52,7 +52,9 @@
                             <li>
                                 <h4 class="p-font-17 m-0">Email Address</h4>
                                 <a href="mailto:dfigurgaon@gmail.com" class="text-decoration-none">
-                                    <p class="p-font-15 m-0">dfigurgaon@gmail.com</p>
+                                    <p class="p-font-15 m-0">
+                                        <a href="mailto:{{ setting('email') }}" class="text-gray">{{ setting('email') }}</a>
+                                    </p>
                                 </a>
                             </li>
                         </ul>
