@@ -288,6 +288,7 @@ class BackendBaseController extends Controller
 
         $$module_name_singular->update($request->all());
 
+        // dd($request->all());
         $this->handleProfileImage($request, $$module_name_singular);
 
 
@@ -306,6 +307,18 @@ class BackendBaseController extends Controller
 
                 // Create a new image entry for each uploaded file
                 $model->images()->create([
+                    'property_id' => $model->id,
+                    'image' => $path,
+                ]);
+            }
+        }
+
+        if ($request->hasFile('plains')) {
+            foreach ($request->file('plains') as $file) {
+                $path = $file->store('plains', 'public'); // stores in storage/app/plains/
+
+                // Create a new image entry for each uploaded file
+                $model->plains()->create([
                     'property_id' => $model->id,
                     'image' => $path,
                 ]);

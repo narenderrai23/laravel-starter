@@ -129,14 +129,14 @@
                                 <div class="col-xs-12">
                                     <h3 class="text-uppercase bottom20">Our <span class="color_red">Plans</span></h3>
                                 </div>
-                                {{-- @if ($property->plans)
-                                    @foreach ($property->plans as $plan)
+                                @if ($property->plains()->get())
+                                    @foreach ($property->plains()->get() as $plan)
                                         <div class="col-md-4 col-sm-4 col-xs-12 top10">
                                             <div class="image">
-                                                <img src="{{ asset('storage/' . $plan->image_path) }}" alt="image" />
+                                                <img src="{{ asset('storage/' . $plan->image) }}" alt="image" />
                                                 <div class="overlay border_radius">
                                                     <a class="fancybox centered"
-                                                        href="{{ asset('storage/' . $plan->image_path) }}"
+                                                        href="{{ asset('storage/' . $plan->image) }}"
                                                         data-fancybox-group="gallery">
                                                         <i class="icon-focus"></i>
                                                     </a>
@@ -144,7 +144,7 @@
                                             </div>
                                         </div>
                                     @endforeach
-                                @endif --}}
+                                @endif
 
                             </div>
                         </div>

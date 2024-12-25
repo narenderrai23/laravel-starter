@@ -96,18 +96,26 @@
                     'aria-label' => 'Images',
                     'aria-describedby' => 'button-images',
                 ]) }}
+        </div>
+    </div>
+</div>
 
-            {{-- <label for="{{ $field_name }}" class="form-label">{{ $field_label }}</label>
+<div class="row">
+    <div class="col-12 mb-3">
+        <div class="form-group">
+            <?php
+            $field_name = 'plains';
+            $field_label = __("property::$module_name.$field_name");
+            $required = 'required';
+            ?>
+            {{ html()->label($field_label, $field_name)->class('form-label')->for($field_name) }}
             {!! field_required($required) !!}
-            <div class="input-group mb-3">
-                <input type="file" name="{{ $field_name }}[]" id="{{ $field_name }}" class="form-control"
-                    placeholder="{{ $field_label }}" aria-label="Images" aria-describedby="button-image"
-                    {{ $required }} multiple>
-                <button class="btn btn-outline-info" id="button-image" data-input="{{ $field_name }}" type="button">
-                    <i class="fas fa-folder-open"></i>
-                    &nbsp;@lang('Browse')
-                </button>
-            </div> --}}
+            {{ html()->file($field_name . '[]')->class('form-control')->attributes([
+                    'multiple' => true,
+                    'accept' => 'image/*', // Only accept image files
+                    'aria-label' => 'Images',
+                    'aria-describedby' => 'button-images',
+                ]) }}
         </div>
     </div>
 </div>

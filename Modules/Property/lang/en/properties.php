@@ -8,6 +8,7 @@ return [
     'content' => 'Content',
     'image' => 'Image',
     'images' => 'Gallery Image',
+    'plains' => 'Plains',
     'category_id' => 'Category',
     'location_id' => 'Location',
     'type' => 'Type',
