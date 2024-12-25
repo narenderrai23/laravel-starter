@@ -20,7 +20,6 @@ Route::group(['as' => 'frontend.'], routes: function () {
     Route::view('/services', 'front.services')->name('services'); // Services page
     Route::view('/gallery', 'front.gallery')->name('gallery'); // Gallery page
     Route::view('/career', 'front.career')->name('career'); // Career page
-    Route::view('/blog', 'front.blog')->name('blog'); // Blog page
     Route::view('/contact-us', 'front.contact-us')->name('contact-us'); // Contact Us page
 });
 
