@@ -10,10 +10,6 @@
                             <th>{{ __("labels.backend.users.fields.name") }}</th>
                             <th>{{ __("labels.backend.users.fields.email") }}</th>
                             <th>{{ __("labels.backend.users.fields.status") }}</th>
-                            <th>{{ __("labels.backend.users.fields.roles") }}</th>
-                            <th>{{ __("labels.backend.users.fields.permissions") }}</th>
-                            <th>{{ __("labels.backend.users.fields.social") }}</th>
-
                             <th class="text-end">{{ __("labels.backend.action") }}</th>
                         </tr>
                     </thead>
@@ -32,40 +28,6 @@
                                     {!! $user->status_label !!}
                                     {!! $user->confirmed_label !!}
                                 </td>
-                                <td>
-                                    @if ($user->getRoleNames()->count() > 0)
-                                        <ul class="fa-ul">
-                                            @foreach ($user->getRoleNames() as $role)
-                                                <li>
-                                                    <span class="fa-li">
-                                                        <i class="fa-solid fa-user-shield fa-fw"></i>
-                                                    </span>
-                                                    {{ ucwords($role) }}
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    @endif
-                                </td>
-                                <td>
-                                    @if ($user->getAllPermissions()->count() > 0)
-                                        <ul>
-                                            @foreach ($user->getDirectPermissions() as $permission)
-                                                <li>{{ $permission->name }}</li>
-                                            @endforeach
-                                        </ul>
-                                    @endif
-                                </td>
-                                <td>
-                                    <ul class="list-unstyled">
-                                        @foreach ($user->providers as $provider)
-                                            <li>
-                                                <i class="fab fa-{{ $provider->provider }}"></i>
-                                                {{ label_case($provider->provider) }}
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </td>
-
                                 <td class="text-end">
                                     <a
                                         class="btn btn-success btn-sm mt-1"

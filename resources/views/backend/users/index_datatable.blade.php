@@ -32,7 +32,6 @@
                                     <th>{{ __("labels.backend.users.fields.name") }}</th>
                                     <th>{{ __("labels.backend.users.fields.email") }}</th>
                                     <th>{{ __("labels.backend.users.fields.status") }}</th>
-                                    <th>{{ __("labels.backend.users.fields.roles") }}</th>
                                     <th class="text-end">{{ __("labels.backend.action") }}</th>
                                 </tr>
                             </thead>
@@ -86,10 +85,6 @@
                 {
                     data: 'status',
                     name: 'status',
-                },
-                {
-                    data: 'user_roles',
-                    name: 'user_roles',
                 },
                 {
                     data: 'action',

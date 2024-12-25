@@ -135,31 +135,6 @@
                             </td>
                         </tr>
                         <tr>
-                            <th>{{ __("labels.backend.users.fields.roles") }}</th>
-                            <td>
-                                @if ($user->getRoleNames()->count() > 0)
-                                    <ul>
-                                        @foreach ($user->getRoleNames() as $role)
-                                            <li>{{ ucwords($role) }}</li>
-                                        @endforeach
-                                    </ul>
-                                @endif
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>{{ __("labels.backend.users.fields.permissions") }}</th>
-                            <td>
-                                @if ($user->getAllPermissions()->count() > 0)
-                                    <ul>
-                                        @foreach ($user->getAllPermissions() as $permission)
-                                            <li>{{ $permission->name }}</li>
-                                        @endforeach
-                                    </ul>
-                                @endif
-                            </td>
-                        </tr>
-
-                        <tr>
                             <th>{{ __("labels.backend.users.fields.created_at") }}</th>
                             <td>
                                 {{ $user->created_at }} by User:{{ $user->created_by }}

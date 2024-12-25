@@ -84,7 +84,7 @@ $notifications_latest = optional($notifications)->take(5);
                     </ul>
                 </li>
             @else
-                <x-backend.sidebar-nav-item :permission="$module['permission'] ?? null" :url="$module['url'] ?? route('backend.' . $module['name'] . '.index')" :icon="$module['icon']" :text="$module['text']" />
+                <x-backend.sidebar-nav-item :url="$module['url'] ?? route('backend.' . $module['name'] . '.index')" :icon="$module['icon']" :text="$module['text']" />
             @endif
         @endforeach
     </ul>
