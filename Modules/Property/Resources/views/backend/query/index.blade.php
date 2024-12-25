@@ -18,6 +18,7 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Full Name</th>
                         <th>Phone Number</th>
                         <th>Location</th>
@@ -32,6 +33,7 @@
                 <tbody>
                     @forelse ($queries as $query)
                         <tr>
+                            <td>{{ $query->id }}</td>
                             <td>{{ $query->full_name }}</td>
                             <td>{{ $query->phone_number }}</td>
                             <td>{{ $query->location->name }}</td>

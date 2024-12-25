@@ -24,56 +24,46 @@ $notifications_latest = optional($notifications)->take(5);
                 [
                     'name' => 'dashboard',
                     'text' => __('Dashboard'),
-                    'icon' => 'fa-solid fa-cubes',
+                    'icon' => 'fa-solid fa-chart-line', // Updated icon
                     'url' => route('backend.dashboard'),
                 ],
                 [
                     'group' => 'Property',
-                    'icon' => 'fa-regular fa-file-lines',
+                    'icon' => 'fa-solid fa-building', // Updated icon
                     'items' => [
-                        ['name' => 'properties', 'text' => __('Property'), 'permission' => 'view_posts'],
-                        ['name' => 'categories', 'text' => __('Categories'), 'permission' => 'view_categories'],
-                        ['name' => 'locations', 'text' => __('Locations'), 'permission' => 'view_locations'],
+                        ['name' => 'properties', 'text' => __('Property')],
+                        ['name' => 'categories', 'text' => __('Categories')],
+                        ['name' => 'locations', 'text' => __('Locations')],
                     ],
                 ],
                 [
                     'group' => 'blogs',
-                    'icon' => 'fa-regular fa-file-lines',
-                    'items' => [
-                        ['name' => 'posts', 'text' => __('Blogs'), 'permission' => 'view_posts'],
-                        ['name' => 'tags', 'text' => __('Tags'), 'permission' => 'view_tags'],
-                    ],
+                    'icon' => 'fa-solid fa-newspaper', // Updated icon
+                    'items' => [['name' => 'posts', 'text' => __('Blogs')], ['name' => 'tags', 'text' => __('Tags')]],
                 ],
                 [
-                    'name' => 'queries',
-                    'text' => __('Query'),
-                    'icon' => 'fa-solid fa-gears',
-                ],
-                [
-                    'name' => 'contact',
-                    'text' => __('Contact'),
-                    'icon' => 'fa-solid fa-gears',
+                    'group' => 'Query',
+                    'icon' => 'fa-solid fa-question-circle', // Updated icon
+                    'items' => [['name' => 'queries', 'text' => __('Query')], ['name' => 'contact', 'text' => __('Contact')]],
                 ],
                 [
                     'name' => 'settings',
                     'text' => __('Settings'),
-                    'icon' => 'fa-solid fa-gears',
-                    'permission' => 'edit_settings',
+                    'icon' => 'fa-solid fa-cogs', // Updated icon
                 ],
                 [
                     'name' => 'backups',
                     'text' => __('Backups'),
-                    'icon' => 'fa-solid fa-box-archive',
-                    'permission' => 'view_backups',
+                    'icon' => 'fa-solid fa-database', // Updated icon
                 ],
                 [
                     'name' => 'users',
                     'text' => __('Users'),
-                    'icon' => 'fa-solid fa-user-group',
-                    'permission' => 'view_users',
+                    'icon' => 'fa-solid fa-user', // Updated icon
                 ],
             ];
         @endphp
+
 
         @foreach ($modules as $module)
             @if (isset($module['group']))
@@ -83,15 +73,13 @@ $notifications_latest = optional($notifications)->take(5);
                     </a>
                     <ul class="nav-group-items compact">
                         @foreach ($module['items'] as $item)
-                            @can($item['permission'])
-                                <li class="nav-item">
-                                    <a href="{{ isset($item['route']) ? route($item['route']) : route('backend.' . $item['name'] . '.index') }}"
-                                        class="nav-link">
-                                        <span class="nav-icon"><span class="nav-icon-bullet"></span></span>
-                                        &nbsp; {{ $item['text'] }}
-                                    </a>
-                                </li>
-                            @endcan
+                            <li class="nav-item">
+                                <a href="{{ isset($item['route']) ? route($item['route']) : route('backend.' . $item['name'] . '.index') }}"
+                                    class="nav-link">
+                                    <span class="nav-icon"><span class="nav-icon-bullet"></span></span>
+                                    &nbsp; {{ $item['text'] }}
+                                </a>
+                            </li>
                         @endforeach
                     </ul>
                 </li>

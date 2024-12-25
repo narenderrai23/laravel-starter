@@ -4,13 +4,12 @@
             <?php
             $field_name = 'name';
             $field_lable = __("property::$module_name.$field_name");
-            $field_placeholder = $field_lable;
             $required = 'required';
             ?>
 
             {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
             {!! field_required($required) !!}
-            {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required"]) }}
+            {{ html()->text($field_name)->placeholder($field_lable)->class('form-control')->attributes(["$required"]) }}
         </div>
     </div>
 
@@ -19,13 +18,27 @@
             <?php
             $field_name = 'slug';
             $field_lable = __("property::$module_name.$field_name");
-            $field_placeholder = $field_lable;
             $required = '';
             ?>
 
             {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
             {!! field_required($required) !!}
-            {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required"]) }}
+            {{ html()->text($field_name)->placeholder($field_lable)->class('form-control')->attributes(["$required"]) }}
+        </div>
+    </div>
+
+    <div class="col-12 col-sm-4 mb-3">
+        <div class="form-group">
+            <?php
+            $field_name = 'created_by_alias';
+            $field_lable = __("property::$module_name.$field_name");
+            $field_lable = "Hide Author User's Name and use Alias";
+            $required = '';
+            ?>
+
+            {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
+            {!! field_required($required) !!}
+            {{ html()->text($field_name)->placeholder($field_lable)->class('form-control')->attributes(["$required"]) }}
         </div>
     </div>
 </div>
@@ -35,13 +48,12 @@
             <?php
             $field_name = 'intro';
             $field_lable = __("property::$module_name.$field_name");
-            $field_placeholder = $field_lable;
             $required = 'required';
             ?>
 
             {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
             {!! field_required($required) !!}
-            {{ html()->textarea($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required"]) }}
+            {{ html()->textarea($field_name)->placeholder($field_lable)->class('form-control')->attributes(["$required"]) }}
         </div>
     </div>
 </div>
@@ -51,13 +63,12 @@
             <?php
             $field_name = 'content';
             $field_lable = __("property::$module_name.$field_name");
-            $field_placeholder = $field_lable;
             $required = 'required';
             ?>
 
             {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
             {!! field_required($required) !!}
-            {{ html()->textarea($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required"]) }}
+            {{ html()->textarea($field_name)->placeholder($field_lable)->class('form-control')->attributes(["$required"]) }}
         </div>
     </div>
 </div>
@@ -67,14 +78,13 @@
             <?php
             $field_name = 'image';
             $field_lable = __("property::$module_name.$field_name");
-            $field_placeholder = $field_lable;
             $required = 'required';
             ?>
 
             {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
             {!! field_required($required) !!}
             <div class="input-group mb-3">
-                {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required", 'aria-label' => 'Image', 'aria-describedby' => 'button-image']) }}
+                {{ html()->text($field_name)->placeholder($field_lable)->class('form-control')->attributes(["$required", 'aria-label' => 'Image', 'aria-describedby' => 'button-image']) }}
                 <button class="btn btn-outline-info" id="button-image" data-input="{{ $field_name }}" type="button">
                     <i class="fas fa-folder-open"></i>
                     &nbsp;
@@ -86,6 +96,30 @@
 </div>
 
 <div class="row">
+    <div class="col-12 mb-3">
+        <div class="form-group">
+            <?php
+            $field_name = 'images';
+            $field_label = __("property::$module_name.$field_name");
+            $required = 'required';
+            ?>
+            <label for="{{ $field_name }}" class="form-label">{{ $field_label }}</label>
+            {!! field_required($required) !!}
+            <div class="input-group mb-3">
+                <input type="file" name="{{ $field_name }}[]" id="{{ $field_name }}" class="form-control"
+                    placeholder="{{ $field_label }}" aria-label="Images" aria-describedby="button-image"
+                    {{ $required }} multiple>
+                <button class="btn btn-outline-info" id="button-image" data-input="{{ $field_name }}" type="button">
+                    <i class="fas fa-folder-open"></i>
+                    &nbsp;@lang('Browse')
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
     <div class="col-12 col-sm-4 mb-3">
         <div class="form-group">
             <?php
@@ -93,13 +127,13 @@
             $field_lable = __("property::$module_name.$field_name");
             $field_options = !empty($data) ? optional($data->category())->pluck('name', 'id') : '';
             $selected = !empty($data) ? optional($data->category())->pluck('id')->toArray() : '';
-            $field_placeholder = __('Select an option');
+            $field_lable = __('Select an option');
             $required = 'required';
             ?>
 
             {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
             {!! field_required($required) !!}
-            {{ html()->select($field_name, $field_options, $selected)->placeholder($field_placeholder)->class('form-select select2-category')->attributes(["$required"]) }}
+            {{ html()->select($field_name, $field_options, $selected)->placeholder($field_lable)->class('form-select select2-category')->attributes(["$required"]) }}
         </div>
     </div>
     <div class="col-12 col-sm-4 mb-3">
@@ -109,13 +143,13 @@
             $field_lable = __("property::$module_name.$field_name");
             $field_options = !empty($data) ? optional($data->location())->pluck('name', 'id') : '';
             $selected = !empty($data) ? optional($data->location())->pluck('id')->toArray() : '';
-            $field_placeholder = __('Select an option');
+            $field_lable = __('Select an option');
             $required = 'required';
             ?>
 
             {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
             {!! field_required($required) !!}
-            {{ html()->select($field_name, $field_options, $selected)->placeholder($field_placeholder)->class('form-select select2-location')->attributes(["$required"]) }}
+            {{ html()->select($field_name, $field_options, $selected)->placeholder($field_lable)->class('form-select select2-location')->attributes(["$required"]) }}
         </div>
     </div>
     <div class="col-12 col-sm-4 mb-3">
@@ -123,7 +157,7 @@
             <?php
             $field_name = 'type';
             $field_lable = __("property::$module_name.$field_name");
-            $field_placeholder = __('Select an option');
+            $field_lable = __('Select an option');
             $required = 'required';
             $select_options = \Modules\Post\Enums\PostType::toArray();
             ?>
@@ -138,7 +172,7 @@
             <?php
             $field_name = 'is_featured';
             $field_lable = __("property::$module_name.$field_name");
-            $field_placeholder = __('Select an option');
+            $field_lable = __('Select an option');
             $required = 'required';
             $select_options = [
                 '0' => 'No',
@@ -158,14 +192,14 @@
             <?php
             $field_name = 'status';
             $field_lable = __("property::$module_name.$field_name");
-            $field_placeholder = __('Select an option');
+            $field_lable = __('Select an option');
             $required = 'required';
             $select_options = \Modules\Post\Enums\PostStatus::toArray();
             ?>
 
             {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
             {!! field_required($required) !!}
-            {{ html()->select($field_name, $select_options)->placeholder($field_placeholder)->class('form-select')->attributes(["$required"]) }}
+            {{ html()->select($field_name, $select_options)->placeholder($field_lable)->class('form-select')->attributes(["$required"]) }}
         </div>
     </div>
     <div class="col-12 col-sm-6 mb-3">
@@ -173,13 +207,12 @@
             <?php
             $field_name = 'published_at';
             $field_lable = __("property::$module_name.$field_name");
-            $field_placeholder = $field_lable;
             $required = 'required';
             ?>
 
             {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
             {!! field_required($required) !!}
-            {{ html()->datetime($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required"]) }}
+            {{ html()->datetime($field_name)->placeholder($field_lable)->class('form-control')->attributes(["$required"]) }}
         </div>
     </div>
 </div>
@@ -191,10 +224,10 @@
             <?php
             $field_name = 'address';
             $field_label = __("property::$module_name.$field_name");
-            $field_placeholder = __('Enter address');
+            $field_lable = __('Enter address');
             ?>
             {{ html()->label($field_label, $field_name)->class('form-label')->for($field_name) }}
-            {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control') }}
+            {{ html()->text($field_name)->placeholder($field_lable)->class('form-control') }}
         </div>
     </div>
 
@@ -204,10 +237,10 @@
             <?php
             $field_name = 'description';
             $field_label = __("property::$module_name.$field_name");
-            $field_placeholder = __('Enter description');
+            $field_lable = __('Enter description');
             ?>
             {{ html()->label($field_label, $field_name)->class('form-label')->for($field_name) }}
-            {{ html()->textarea($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(['rows' => 4]) }}
+            {{ html()->textarea($field_name)->placeholder($field_lable)->class('form-control')->attributes(['rows' => 4]) }}
         </div>
     </div>
 
@@ -217,10 +250,10 @@
             <?php
             $field_name = 'additional_info';
             $field_label = __("property::$module_name.$field_name");
-            $field_placeholder = __('Enter additional information');
+            $field_lable = __('Enter additional information');
             ?>
             {{ html()->label($field_label, $field_name)->class('form-label')->for($field_name) }}
-            {{ html()->textarea($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(['rows' => 4]) }}
+            {{ html()->textarea($field_name)->placeholder($field_lable)->class('form-control')->attributes(['rows' => 4]) }}
         </div>
     </div>
 
@@ -230,10 +263,10 @@
             <?php
             $field_name = 'size';
             $field_label = __("property::$module_name.$field_name");
-            $field_placeholder = __('Enter size');
+            $field_lable = __('Enter size');
             ?>
             {{ html()->label($field_label, $field_name)->class('form-label')->for($field_name) }}
-            {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control') }}
+            {{ html()->text($field_name)->placeholder($field_lable)->class('form-control') }}
         </div>
     </div>
 
@@ -243,10 +276,10 @@
             <?php
             $field_name = 'bedrooms';
             $field_label = __("property::$module_name.$field_name");
-            $field_placeholder = __('Enter number of bedrooms');
+            $field_lable = __('Enter number of bedrooms');
             ?>
             {{ html()->label($field_label, $field_name)->class('form-label')->for($field_name) }}
-            {{ html()->number($field_name)->placeholder($field_placeholder)->class('form-control') }}
+            {{ html()->number($field_name)->placeholder($field_lable)->class('form-control') }}
         </div>
     </div>
 
@@ -256,10 +289,10 @@
             <?php
             $field_name = 'bathrooms';
             $field_label = __("property::$module_name.$field_name");
-            $field_placeholder = __('Enter number of bathrooms');
+            $field_lable = __('Enter number of bathrooms');
             ?>
             {{ html()->label($field_label, $field_name)->class('form-label')->for($field_name) }}
-            {{ html()->number($field_name)->placeholder($field_placeholder)->class('form-control') }}
+            {{ html()->number($field_name)->placeholder($field_lable)->class('form-control') }}
         </div>
     </div>
 
@@ -269,10 +302,10 @@
             <?php
             $field_name = 'garage';
             $field_label = __("property::$module_name.$field_name");
-            $field_placeholder = __('Enter number of garage spaces');
+            $field_lable = __('Enter number of garage spaces');
             ?>
             {{ html()->label($field_label, $field_name)->class('form-label')->for($field_name) }}
-            {{ html()->number($field_name)->placeholder($field_placeholder)->class('form-control') }}
+            {{ html()->number($field_name)->placeholder($field_lable)->class('form-control') }}
         </div>
     </div>
 
@@ -282,10 +315,10 @@
             <?php
             $field_name = 'price';
             $field_label = __("property::$module_name.$field_name");
-            $field_placeholder = __('Enter price');
+            $field_lable = __('Enter price');
             ?>
             {{ html()->label($field_label, $field_name)->class('form-label')->for($field_name) }}
-            {{ html()->number($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(['step' => '0.01']) }}
+            {{ html()->number($field_name)->placeholder($field_lable)->class('form-control')->attributes(['step' => '0.01']) }}
         </div>
     </div>
 
@@ -307,10 +340,10 @@
             <?php
             $field_name = 'year_built';
             $field_label = __("property::$module_name.$field_name");
-            $field_placeholder = __('Enter year built');
+            $field_lable = __('Enter year built');
             ?>
             {{ html()->label($field_label, $field_name)->class('form-label')->for($field_name) }}
-            {{ html()->number($field_name)->placeholder($field_placeholder)->class('form-control') }}
+            {{ html()->number($field_name)->placeholder($field_lable)->class('form-control') }}
         </div>
     </div>
 
@@ -320,10 +353,10 @@
             <?php
             $field_name = 'cross_streets';
             $field_label = __("property::$module_name.$field_name");
-            $field_placeholder = __('Enter cross streets');
+            $field_lable = __('Enter cross streets');
             ?>
             {{ html()->label($field_label, $field_name)->class('form-label')->for($field_name) }}
-            {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control') }}
+            {{ html()->text($field_name)->placeholder($field_lable)->class('form-control') }}
         </div>
     </div>
 
@@ -333,10 +366,10 @@
             <?php
             $field_name = 'floors';
             $field_label = __("property::$module_name.$field_name");
-            $field_placeholder = __('Enter number of floors');
+            $field_lable = __('Enter number of floors');
             ?>
             {{ html()->label($field_label, $field_name)->class('form-label')->for($field_name) }}
-            {{ html()->number($field_name)->placeholder($field_placeholder)->class('form-control') }}
+            {{ html()->number($field_name)->placeholder($field_lable)->class('form-control') }}
         </div>
     </div>
 
@@ -346,10 +379,10 @@
             <?php
             $field_name = 'plumbing';
             $field_label = __("property::$module_name.$field_name");
-            $field_placeholder = __('Enter plumbing details');
+            $field_lable = __('Enter plumbing details');
             ?>
             {{ html()->label($field_label, $field_name)->class('form-label')->for($field_name) }}
-            {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control') }}
+            {{ html()->text($field_name)->placeholder($field_lable)->class('form-control') }}
         </div>
     </div>
 
@@ -359,10 +392,10 @@
             <?php
             $field_name = 'plans';
             $field_label = __("property::$module_name.$field_name");
-            $field_placeholder = __('Enter plans in JSON format');
+            $field_lable = __('Enter plans in JSON format');
             ?>
             {{ html()->label($field_label, $field_name)->class('form-label')->for($field_name) }}
-            {{ html()->textarea($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(['rows' => 5]) }}
+            {{ html()->textarea($field_name)->placeholder($field_lable)->class('form-control')->attributes(['rows' => 5]) }}
         </div>
     </div>
 </div>
@@ -376,13 +409,12 @@
             <?php
             $field_name = 'meta_title';
             $field_lable = __("property::$module_name.$field_name");
-            $field_placeholder = $field_lable;
             $required = '';
             ?>
 
             {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
             {!! field_required($required) !!}
-            {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required"]) }}
+            {{ html()->text($field_name)->placeholder($field_lable)->class('form-control')->attributes(["$required"]) }}
         </div>
     </div>
     <div class="col-12 col-sm-5 mb-3">
@@ -390,13 +422,12 @@
             <?php
             $field_name = 'meta_keywords';
             $field_lable = __("property::$module_name.$field_name");
-            $field_placeholder = $field_lable;
             $required = '';
             ?>
 
             {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
             {!! field_required($required) !!}
-            {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required"]) }}
+            {{ html()->text($field_name)->placeholder($field_lable)->class('form-control')->attributes(["$required"]) }}
         </div>
     </div>
     <div class="col-12 col-sm-2 mb-3">
@@ -404,13 +435,12 @@
             <?php
             $field_name = 'order';
             $field_lable = __("property::$module_name.$field_name");
-            $field_placeholder = $field_lable;
             $required = '';
             ?>
 
             {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
             {!! field_required($required) !!}
-            {{ html()->number($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required"]) }}
+            {{ html()->number($field_name)->placeholder($field_lable)->class('form-control')->attributes(["$required"]) }}
         </div>
     </div>
 </div>
@@ -420,13 +450,12 @@
             <?php
             $field_name = 'meta_description';
             $field_lable = __("property::$module_name.$field_name");
-            $field_placeholder = $field_lable;
             $required = '';
             ?>
 
             {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
             {!! field_required($required) !!}
-            {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required"]) }}
+            {{ html()->text($field_name)->placeholder($field_lable)->class('form-control')->attributes(["$required"]) }}
         </div>
     </div>
     <div class="col-12 col-sm-6 mb-3">
@@ -434,13 +463,12 @@
             <?php
             $field_name = 'meta_og_image';
             $field_lable = __("property::$module_name.$field_name");
-            $field_placeholder = $field_lable;
             $required = '';
             ?>
 
             {{ html()->label($field_lable, $field_name)->class('form-label')->for($field_name) }}
             {!! field_required($required) !!}
-            {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required"]) }}
+            {{ html()->text($field_name)->placeholder($field_lable)->class('form-control')->attributes(["$required"]) }}
         </div>
     </div>
 </div>
@@ -563,6 +591,8 @@
                     cache: true,
                 },
             });
+
+
         });
     </script>
 @endpush

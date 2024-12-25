@@ -5,7 +5,7 @@ use App\Livewire\Privacy;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EstimateController;
 use App\Http\Controllers\LanguageController;
-
+use App\Http\Controllers\ContactQueryController;
 /*
 *
 * Auth Routes
@@ -75,8 +75,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend', 'prefix' => 'admin'
     Route::get('/queries/show/{id}', action: [EstimateController::class, 'show'])->name('queries.show');
 
 
-    Route::get('contact/index', [\App\Http\Controllers\ContactQueryController::class, 'index'])->name(name: 'contact.index');
-    Route::get('/contact/show/{id}', action: [\App\Http\Controllers\ContactQueryController::class, 'show'])->name('contact.show');
+    Route::get('contact/index', [ContactQueryController::class, 'index'])->name(name: 'contact.index');
+    Route::get('/contact/show/{id}', action: [ContactQueryController::class, 'show'])->name('contact.show');
 
 
     /*
