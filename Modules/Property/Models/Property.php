@@ -4,10 +4,10 @@ namespace Modules\Property\Models;
 
 use Carbon\Carbon;
 use App\Models\BaseModel;
-use App\Models\PropertyImage;
 use Modules\Post\Enums\PostStatus;
 use Spatie\Activitylog\LogOptions;
 use Illuminate\Notifications\Notifiable;
+use Modules\Property\Models\PropertyImage;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Post\Models\Presenters\PostPresenter;

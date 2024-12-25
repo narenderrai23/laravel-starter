@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\PropertyImage;
 use Illuminate\Database\Seeder;
 use Modules\Property\Models\Property;
+use Modules\Property\Models\PropertyImage;
 
 class PropertyImagesTableSeeder extends Seeder
 {
