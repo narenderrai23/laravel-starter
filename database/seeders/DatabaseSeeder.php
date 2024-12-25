@@ -8,7 +8,6 @@ use Modules\Tag\database\seeders\TagDatabaseSeeder;
 use Modules\Post\database\seeders\PostDatabaseSeeder;
 use Modules\Category\database\seeders\CategoryDatabaseSeeder;
 use Modules\Property\database\seeders\PropertyDatabaseSeeder;
-use Modules\Property\database\seeders\PropertyImagesTableSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -27,7 +26,6 @@ class DatabaseSeeder extends Seeder
                 PostDatabaseSeeder::class,
                 \Modules\Location\database\seeders\LocationDatabaseSeeder::class,
                 PropertyDatabaseSeeder::class,
-                PropertyImagesTableSeeder::class,
             ]
         );
 
