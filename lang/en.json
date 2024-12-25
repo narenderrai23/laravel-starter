@@ -62,7 +62,6 @@
     "Account": "Account",
     "Settings": "Settings",
     "Login": "Login",
-    "Register": "Register",
     "Create an account": "Create an account",
     "Logout": "Logout",
     "All values of :module_name (Id: :id)": "All values of <b>:module_name (Id: :id)</b>.",
@@ -98,7 +97,7 @@
     "Log Info": "Log Info",
 
     "Select an option": "-- Select an option --",
-    
+
     "URL": "URL",
     "Username": "Username",
     "Visit": "Visit",

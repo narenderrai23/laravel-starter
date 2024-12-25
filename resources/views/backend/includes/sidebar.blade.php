@@ -28,12 +28,6 @@ $notifications_latest = optional($notifications)->take(5);
                     'url' => route('backend.dashboard'),
                 ],
                 [
-                    'name' => 'notifications',
-                    'text' => __('Notifications'),
-                    'icon' => 'fa-regular fa-bell',
-                    'url' => route('backend.notifications.index'),
-                ],
-                [
                     'group' => 'Property',
                     'icon' => 'fa-regular fa-file-lines',
                     'items' => [
@@ -77,21 +71,6 @@ $notifications_latest = optional($notifications)->take(5);
                     'text' => __('Users'),
                     'icon' => 'fa-solid fa-user-group',
                     'permission' => 'view_users',
-                ],
-                [
-                    'name' => 'roles',
-                    'text' => __('Roles'),
-                    'icon' => 'fa-solid fa-user-shield',
-                    'permission' => 'view_roles',
-                ],
-
-                [
-                    'group' => 'logs',
-                    'icon' => 'fa-solid fa-list-ul',
-                    'items' => [
-                        ['route' => 'log-viewer::dashboard', 'text' => 'Log Dashboard', 'permission' => 'view_logs'],
-                        ['route' => 'log-viewer::logs.list', 'text' => 'Daily Log', 'permission' => 'view_logs'],
-                    ],
                 ],
             ];
         @endphp

@@ -30,52 +30,6 @@ $notifications_latest = optional($notifications)->take(5);
                     type="button"
                     aria-expanded="false"
                 >
-                    <i class="fa-regular fa-bell"></i>
-                    @if ($notifications_count)
-                        &nbsp;
-                        <span class="badge badge-pill bg-danger">{{ $notifications_count }}</span>
-                    @endif
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end" style="--cui-dropdown-min-width: 8rem">
-                    <li>
-                        <div class="dropdown-header bg-body-tertiary text-body-secondary fw-semibold rounded-top mb-2">
-                            <strong>
-                                @lang("You have :count notifications", ["count" => $notifications_count])
-                            </strong>
-                        </div>
-                    </li>
-                    @if ($notifications_latest)
-                        @foreach ($notifications_latest as $notification)
-                            @php
-                                $notification_text = isset($notification->data["title"])
-                                    ? $notification->data["title"]
-                                    : $notification->data["module"];
-                            @endphp
-
-                            <li>
-                                <a
-                                    class="dropdown-item d-flex align-items-center"
-                                    href="{{ route("backend.notifications.show", $notification) }}"
-                                >
-                                    <i
-                                        class="{{ isset($notification->data["icon"]) ? $notification->data["icon"] : "fa-solid fa-bullhorn" }}"
-                                    ></i>
-                                    &nbsp;{{ $notification_text }}
-                                </a>
-                            </li>
-                        @endforeach
-                    @endif
-                </ul>
-            </li>
-        </ul>
-        <ul class="header-nav">
-            <li class="nav-item dropdown">
-                <button
-                    class="btn btn-link nav-link d-flex align-items-center px-2 py-2"
-                    data-coreui-toggle="dropdown"
-                    type="button"
-                    aria-expanded="false"
-                >
                     <svg
                         class="theme-icon-active icon icon-lg"
                         xmlns="http://www.w3.org/2000/svg"
