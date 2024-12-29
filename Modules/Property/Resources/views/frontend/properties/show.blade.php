@@ -75,7 +75,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td><b>Price</b></td>
-                                                    <td class="text-right">${{ number_format($property->price, 2) }}</td>
+                                                    <td class="text-right">₹{{ number_format($property->price, 2) }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td><b>Property Size</b></td>
