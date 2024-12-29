@@ -28,7 +28,7 @@
 
         <x-frontend.card :url="$details_url" :name="$$module_name_singular->name">
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                {{$$module_name_singular->description}}
+                {{$$module_name_singular->intro}}
             </p>
         </x-frontend.card>
 

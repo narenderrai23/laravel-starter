@@ -52,8 +52,6 @@ class PropertyFactory extends Factory
             'updated_by' => $this->faker->randomDigitNotNull(),
             'deleted_by' => $this->faker->optional()->randomDigitNotNull(),
             'address' => $this->faker->address,
-            'description' => $this->faker->paragraph,
-            'additional_info' => $this->faker->text(200),
             'size' => $this->faker->numberBetween(50, 500) . ' sqm',
             'bedrooms' => $this->faker->numberBetween(1, 5),
             'bathrooms' => $this->faker->numberBetween(1, 4),

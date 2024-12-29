@@ -218,32 +218,6 @@
         </div>
     </div>
 
-    <!-- Description -->
-    <div class="col-12 col-sm-12 mb-3">
-        <div class="form-group">
-            <?php
-            $field_name = 'description';
-            $field_label = __("property::$module_name.$field_name");
-            $field_lable = __('Enter description');
-            ?>
-            {{ html()->label($field_label, $field_name)->class('form-label')->for($field_name) }}
-            {{ html()->textarea($field_name)->placeholder($field_lable)->class('form-control')->attributes(['rows' => 4]) }}
-        </div>
-    </div>
-
-    <!-- Additional Info -->
-    <div class="col-12 col-sm-12 mb-3">
-        <div class="form-group">
-            <?php
-            $field_name = 'additional_info';
-            $field_label = __("property::$module_name.$field_name");
-            $field_lable = __('Enter additional information');
-            ?>
-            {{ html()->label($field_label, $field_name)->class('form-label')->for($field_name) }}
-            {{ html()->textarea($field_name)->placeholder($field_lable)->class('form-control')->attributes(['rows' => 4]) }}
-        </div>
-    </div>
-
     <!-- Size -->
     <div class="col-12 col-sm-6 mb-3">
         <div class="form-group">

@@ -43,8 +43,6 @@ return new class extends Migration {
             $table->integer('deleted_by')->unsigned()->nullable();
 
             $table->string('address')->nullable();
-            $table->text('description')->nullable();
-            $table->text('additional_info')->nullable();
             $table->string('size')->nullable();
             $table->integer('bedrooms')->nullable();
             $table->integer('bathrooms')->nullable();
