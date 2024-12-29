@@ -53,7 +53,7 @@
                                     <h3 class="text-uppercase bottom30">Property <span class="color_red">Description</span>
                                     </h3>
                                     <p class="bottom30">{{ $property->intro }}</p>
-                                    <p class="bottom30">{{ $property->content }}</p>
+                                    <p class="bottom30">{!! $property->content !!}</p>
                                     <div class="property_meta top10">
                                         <span><i class="fa fa-object-group"></i>{{ $property->size }} sq ft</span>
                                         <span><i class="fa fa-bath"></i>{{ $property->bathrooms }} Bathrooms</span>
