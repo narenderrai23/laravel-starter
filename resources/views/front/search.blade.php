@@ -49,7 +49,7 @@
                                         <h3><a href="{{ $property_route }}">{{ $property->name }}</a>
                                         </h3>
                                         <span class="bottom10">{{ $property->location->name }}</span>
-                                        <p><strong>₹{{ number_format($property->price, 2) }} Per Month</strong></p>
+                                        <p><strong>₹{{ number_format($property->price, 2) }}</strong></p>
                                     </div>
                                     <div class="favroute clearfix">
                                         <p class="pull-left"><i class="icon-calendar2"></i>
